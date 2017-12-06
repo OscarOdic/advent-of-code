@@ -3,7 +3,7 @@ package adventOfCode
 import scala.io.Source
 
 object Day2 {
-  val input = Source.fromResource("day2.txt").getLines().toList.map(_.split("\t").map(_.toInt).toList)
+  val input = Source.fromResource("day2.txt").getLines.toList.map(_.split("\t").map(_.toInt).toList)
 
   def resolveWithF(input: List[List[Int]])(f: List[Int] => Int): Int = input.map(f).sum
 

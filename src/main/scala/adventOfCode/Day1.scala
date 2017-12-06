@@ -3,7 +3,7 @@ package adventOfCode
 import scala.io.Source
 
 object Day1 {
-  val input = Source.fromResource("day1.txt").getLines().mkString("\n")
+  val input = Source.fromResource("day1.txt").getLines.mkString("\n")
 
   def resolveWithN(list: Seq[Int], n: Int): Int = list.zipWithIndex.map {
     case (value, index) if index+n < list.size => (value, list(index+n))
