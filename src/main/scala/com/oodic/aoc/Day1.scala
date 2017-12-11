@@ -1,9 +1,9 @@
-package adventOfCode
+package com.oodic.aoc
 
 import scala.io.Source
 
 object Day1 {
-  val input = Source.fromResource("day1.txt").getLines.mkString("\n")
+  val input = Source.fromResource("day1.txt").getLines.mkString.map(_.asDigit)
 
   def resolveWithN(list: Seq[Int], n: Int): Int = list.zipWithIndex.map {
     case (value, index) if index+n < list.size => (value, list(index+n))
@@ -18,7 +18,7 @@ object Day1 {
   def resolveSecond(list: Seq[Int]): Int = resolveWithN(list, list.size/2)
 
   def main(args: Array[String]): Unit = {
-    println(s"[first star] ${resolveFirst(input.map(_.asDigit))}")
-    println(s"[second star] ${resolveSecond(input.map(_.asDigit))}")
+    println(s"[first star] ${resolveFirst(input)}")
+    println(s"[second star] ${resolveSecond(input)}")
   }
 }

@@ -1,4 +1,4 @@
-package adventOfCode
+package com.oodic.aoc
 
 object Day3 {
 

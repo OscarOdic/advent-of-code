@@ -1,4 +1,4 @@
-package adventOfCode
+package com.oodic.aoc
 
 import scala.io.Source
 
@@ -39,12 +39,12 @@ object Day10 {
       else digit.toHexString
     ).mkString("")
 
-  def resolveFirst(input: String) =
-    tieKnot(256, input.split(",").map(_.toInt).toList).take(2).product
+  def resolveFirst(input: String, size: Int = 256) =
+    tieKnot(size, input.split(",").map(_.toInt).toList).take(2).product
 
-  def resolveSecond(input: String) = {
+  def resolveSecond(input: String, size: Int = 256) = {
     val lengths = input.split("").toList.map(_.codePointAt(0)) ++ List(17, 31, 73, 47, 23)
-    getHex(getHash(tieKnot(256, lengths, 64)))
+    getHex(getHash(tieKnot(size, lengths, 64)))
   }
 
   def main(args: Array[String]): Unit = {

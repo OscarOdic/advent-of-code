@@ -1,4 +1,4 @@
-package adventOfCode
+package com.oodic.aoc
 
 import scala.io.Source
 import scala.util.parsing.combinator.RegexParsers
