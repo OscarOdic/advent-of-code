@@ -2,7 +2,7 @@ package com.oodic.aoc
 
 import org.scalatest.{FlatSpec, Matchers}
 
-class Day7Test extends FlatSpec with Matchers {
+class Day07Test extends FlatSpec with Matchers {
   val testInput = List(
     "pbga (66)",
     "xhth (57)",
@@ -20,14 +20,14 @@ class Day7Test extends FlatSpec with Matchers {
   )
 
   it should "answer first part" in {
-    Day7.resolveFirst(testInput) should be("tknk")
+    Day07.resolveFirst(testInput) should be("tknk")
 
-    Day7.resolveFirst(Day7.input) should be("qibuqqg")
+    Day07.resolveFirst(Day07.input) should be("qibuqqg")
   }
 
   it should "answer second part" in {
-    Day7.resolveSecond(testInput) should be(60)
+    Day07.resolveSecond(testInput) should be(60)
 
-    Day7.resolveSecond(Day7.input) should be(1079)
+    Day07.resolveSecond(Day07.input) should be(1079)
   }
 }

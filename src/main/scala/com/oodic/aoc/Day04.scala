@@ -2,7 +2,7 @@ package com.oodic.aoc
 
 import scala.io.Source
 
-object Day4 {
+object Day04 {
   val input = Source.fromResource("day4.txt").getLines.toList
 
   def resolveWithF(passwords: Seq[String])(f: Seq[String] => Boolean) = passwords.count(password => {

@@ -3,7 +3,7 @@ package com.oodic.aoc
 import scala.io.Source
 import scala.util.parsing.combinator.RegexParsers
 
-object Day8 extends RegexParsers {
+object Day08 extends RegexParsers {
   val input = Source.fromResource("day8.txt").getLines.toList
 
   val Inc = "inc"

@@ -2,7 +2,7 @@ package com.oodic.aoc
 
 import scala.io.Source
 
-object Day1 {
+object Day01 {
   val input = Source.fromResource("day1.txt").getLines.mkString.map(_.asDigit)
 
   def resolveWithN(list: Seq[Int], n: Int): Int = list.zipWithIndex.map {

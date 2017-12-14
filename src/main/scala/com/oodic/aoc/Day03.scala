@@ -1,6 +1,6 @@
 package com.oodic.aoc
 
-object Day3 {
+object Day03 {
 
   trait Direction
   object Up extends Direction

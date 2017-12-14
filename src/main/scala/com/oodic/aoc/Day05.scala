@@ -2,7 +2,7 @@ package com.oodic.aoc
 
 import scala.io.Source
 
-object Day5 {
+object Day05 {
   val input = Source.fromResource("day5.txt").getLines.toVector.map(_.toInt)
 
   def resolveWithF(instructions: Vector[Int])(f: Int => Int) = {

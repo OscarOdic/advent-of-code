@@ -2,7 +2,7 @@ package com.oodic.aoc
 
 import scala.io.Source
 
-object Day6 {
+object Day06 {
   val input = Source.fromResource("day6.txt").getLines.mkString.split("\t").toVector.map(_.toInt)
 
   def getCycle(history: List[Vector[Int]], value: Vector[Int]) =

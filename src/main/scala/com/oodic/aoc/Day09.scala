@@ -3,7 +3,7 @@ package com.oodic.aoc
 import scala.io.Source
 import scala.util.parsing.combinator.RegexParsers
 
-object Day9 extends RegexParsers {
+object Day09 extends RegexParsers {
   val input = Source.fromResource("day9.txt").getLines.mkString
 
   trait Block {

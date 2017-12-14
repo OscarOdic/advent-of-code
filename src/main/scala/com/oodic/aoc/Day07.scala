@@ -3,7 +3,7 @@ package com.oodic.aoc
 import scala.io.Source
 import scala.util.parsing.combinator._
 
-object Day7 extends RegexParsers {
+object Day07 extends RegexParsers {
   val input = Source.fromResource("day7.txt").getLines.toList
 
   case class SimpleNode(name: String, value: Int, children: Vector[String]) {
