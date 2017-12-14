@@ -28,6 +28,11 @@ object Day10 {
     }._1
   }
 
+  def knotHash(value: String, size: Int = 256) = {
+    val lengths = value.split("").toList.map(_.codePointAt(0)) ++ List(17, 31, 73, 47, 23)
+    getHash(tieKnot(size, lengths, 64))
+  }
+
   def getHash(sparseHash: List[Int]) =
     (0 until 16).map(blockNr =>
       sparseHash.slice(blockNr * 16, (blockNr + 1) * 16).reduce(_ ^ _)
@@ -42,10 +47,8 @@ object Day10 {
   def resolveFirst(input: String, size: Int = 256) =
     tieKnot(size, input.split(",").map(_.toInt).toList).take(2).product
 
-  def resolveSecond(input: String, size: Int = 256) = {
-    val lengths = input.split("").toList.map(_.codePointAt(0)) ++ List(17, 31, 73, 47, 23)
-    getHex(getHash(tieKnot(size, lengths, 64)))
-  }
+  def resolveSecond(input: String, size: Int = 256) =
+    getHex(knotHash(input, size))
 
   def main(args: Array[String]): Unit = {
     println(s"[first star] ${resolveFirst(input)}")
