@@ -4,7 +4,7 @@ import org.scalatest.{FlatSpec, Matchers}
 
 class Day10Test extends FlatSpec with Matchers {
   it should "answer first part" in {
-    Day10.resolveFirst("3,4,1,5", 5) should be(12)
+    Day10.resolveFirstWithSize("3,4,1,5", 5) should be(12)
 
     Day10.resolveFirst(Day10.input) should be(1935)
   }

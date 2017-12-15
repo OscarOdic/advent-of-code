@@ -1,10 +1,9 @@
 package com.oodic.aoc
 
-import scala.io.Source
 import scala.util.parsing.combinator.RegexParsers
 
-object Day08 extends RegexParsers {
-  val input = Source.fromResource("day8.txt").getLines.toList
+object Day08 extends PuzzleDay[List[String], Int, Int] with RegexParsers {
+  override val input: List[String] = getInputFile
 
   val Inc = "inc"
   val Dec = "dec"
@@ -16,7 +15,7 @@ object Day08 extends RegexParsers {
   val NotEq = "!="
 
   case class Operation(register: String, op: String, value: Int) {
-    def eval(registers: Map[String, Int]) = {
+    def eval(registers: Map[String, Int]): Map[String, Int] = {
       val registerValue = registers.getOrElse(register, 0)
       registers.updated(
         register,
@@ -29,7 +28,7 @@ object Day08 extends RegexParsers {
   }
 
   case class Condition(register: String, cond: String, value: Int) {
-    def eval(registers: Map[String, Int]) = {
+    def eval(registers: Map[String, Int]): Boolean = {
       val registerValue = registers.getOrElse(register, 0)
       cond match {
         case Sup => registerValue > value
@@ -43,10 +42,11 @@ object Day08 extends RegexParsers {
   }
 
   case class Instruction(operation: Operation, condition: Condition) {
-    def eval(registers: Map[String, Int]) = condition.eval(registers) match {
-      case true => operation.eval(registers)
-      case false => registers
-    }
+    def eval(registers: Map[String, Int]): Map[String, Int] =
+      if (condition.eval(registers))
+        operation.eval(registers)
+      else
+        registers
   }
 
   val operationParser: Parser[Operation] = for {
@@ -67,13 +67,13 @@ object Day08 extends RegexParsers {
     condition <- conditionParser
   } yield Instruction(operation, condition)
 
-  def resolveFirst(instructions: List[String]) = instructions
+  override def resolveFirst(instructions: List[String]): Int = instructions
     .map(parse(instructionParser, _).get)
     .foldLeft(Map[String, Int]())((registers, instruction) => instruction.eval(registers))
     .maxBy(_._2)
     ._2
 
-  def resolveSecond(instructions: List[String]) = instructions
+  override def resolveSecond(instructions: List[String]): Int = instructions
     .map(parse(instructionParser, _).get)
     .foldLeft((Map[String, Int](), 0)) {
       case ((registers, max), instruction) =>
@@ -81,9 +81,4 @@ object Day08 extends RegexParsers {
         val newValue = newRegisters.getOrElse(instruction.operation.register, 0)
         (newRegisters, if (newValue > max) newValue else max)
     }._2
-
-  def main(args: Array[String]): Unit = {
-    println(s"[first star] ${resolveFirst(input)}")
-    println(s"[second star] ${resolveSecond(input)}")
-  }
 }

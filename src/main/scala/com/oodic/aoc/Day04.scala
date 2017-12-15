@@ -1,25 +1,18 @@
 package com.oodic.aoc
 
-import scala.io.Source
+object Day04 extends PuzzleDay[List[String], Int, Int] {
+  override val input: List[String] = getInputFile
 
-object Day04 {
-  val input = Source.fromResource("day4.txt").getLines.toList
-
-  def resolveWithF(passwords: Seq[String])(f: Seq[String] => Boolean) = passwords.count(password => {
+  def resolveWithF(passwords: Seq[String])(f: Seq[String] => Boolean): Int = passwords.count(password => {
     f(password.split(" "))
   })
 
-  def resolveFirst(passwords: List[String]) =
+  override def resolveFirst(passwords: List[String]): Int =
     resolveWithF(passwords)(words => words.distinct equals words)
 
-  def resolveSecond(passwords: List[String]) =
+  override def resolveSecond(passwords: List[String]): Int =
     resolveWithF(passwords)(words => {
       val sortedWords = words.map(_.sorted)
       sortedWords.distinct equals sortedWords
     })
-
-  def main(args: Array[String]): Unit = {
-    println(s"[first star] ${resolveFirst(input)}")
-    println(s"[second star] ${resolveSecond(input)}")
-  }
 }

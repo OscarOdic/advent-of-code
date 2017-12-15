@@ -1,11 +1,9 @@
 package com.oodic.aoc
 
-import scala.io.Source
+object Day10 extends PuzzleDay[String, Int, String] {
+  override val input: String = getInputFile.mkString
 
-object Day10 {
-  val input = Source.fromResource("day10.txt").getLines.mkString
-
-  def tieKnot(size: Int, lengths: List[Int], rounds: Int = 1) = {
+  def tieKnot(size: Int, lengths: List[Int], rounds: Int = 1): List[Int] = {
     def rec(list: List[Int], lengths: List[Int], position: Int = 0, skip: Int = 0): (List[Int], Int, Int) = lengths match {
       case Nil => (list, position, skip)
       case h::t =>
@@ -28,30 +26,26 @@ object Day10 {
     }._1
   }
 
-  def knotHash(value: String, size: Int = 256) = {
+  def knotHash(value: String, size: Int = 256): List[Int] = {
     val lengths = value.split("").toList.map(_.codePointAt(0)) ++ List(17, 31, 73, 47, 23)
     getHash(tieKnot(size, lengths, 64))
   }
 
-  def getHash(sparseHash: List[Int]) =
+  def getHash(sparseHash: List[Int]): List[Int] =
     (0 until 16).map(blockNr =>
       sparseHash.slice(blockNr * 16, (blockNr + 1) * 16).reduce(_ ^ _)
     ).toList
 
-  def getHex(denseHash: List[Int]) = denseHash
+  def getHex(denseHash: List[Int]): String = denseHash
     .map(digit =>
       if (digit.toHexString.length == 1) "0" + digit.toHexString
       else digit.toHexString
     ).mkString("")
 
-  def resolveFirst(input: String, size: Int = 256) =
+  def resolveFirstWithSize(input: String, size: Int = 256): Int =
     tieKnot(size, input.split(",").map(_.toInt).toList).take(2).product
 
-  def resolveSecond(input: String, size: Int = 256) =
-    getHex(knotHash(input, size))
+  override def resolveFirst(input: String): Int = resolveFirstWithSize(input)
 
-  def main(args: Array[String]): Unit = {
-    println(s"[first star] ${resolveFirst(input)}")
-    println(s"[second star] ${resolveSecond(input)}")
-  }
+  override def resolveSecond(input: String): String = getHex(knotHash(input))
 }

@@ -1,11 +1,9 @@
 package com.oodic.aoc
 
-import scala.io.Source
+object Day05 extends PuzzleDay[Vector[Int], Long, Long] {
+  override val input: Vector[Int] = getInputFile.toVector.map(_.toInt)
 
-object Day05 {
-  val input = Source.fromResource("day5.txt").getLines.toVector.map(_.toInt)
-
-  def resolveWithF(instructions: Vector[Int])(f: Int => Int) = {
+  def resolveWithF(instructions: Vector[Int])(f: Int => Int): Long = {
     def rec(instructions: Vector[Int], index: Int = 0, nStep: Long = 0): Long = {
       val value = instructions(index)
       index + value match {
@@ -16,17 +14,12 @@ object Day05 {
     rec(instructions)
   }
 
-  def resolveFirst(instructions: Vector[Int]) =
+  override def resolveFirst(instructions: Vector[Int]): Long =
     resolveWithF(instructions)(_ + 1)
 
-  def resolveSecond(instructions: Vector[Int]) =
+  override def resolveSecond(instructions: Vector[Int]): Long =
     resolveWithF(instructions) {
       case value if value >= 3 => value - 1
       case value => value + 1
     }
-
-  def main(args: Array[String]): Unit = {
-    println(s"[first star] ${resolveFirst(input)}")
-    println(s"[second star] ${resolveSecond(input)}")
-  }
 }

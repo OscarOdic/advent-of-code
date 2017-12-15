@@ -1,11 +1,9 @@
 package com.oodic.aoc
 
-import scala.io.Source
+object Day11 extends PuzzleDay[List[String], Int, Int] {
+  override val input: List[String] = getInputFile.mkString.split(",").toList
 
-object Day11 {
-  val input = Source.fromResource("day11.txt").getLines.mkString.split(",").toList
-
-  def move(position: (Double, Double), direction: String) = direction match {
+  def move(position: (Double, Double), direction: String): (Double, Double) = direction match {
     case "n" => (position._1, position._2 + 1)
     case "s" => (position._1, position._2 - 1)
     case "ne" => (position._1 + 1, position._2 + 0.5)
@@ -28,20 +26,15 @@ object Day11 {
     }
   }
 
-  def resolveFirst(input: List[String]) = {
+  override def resolveFirst(input: List[String]): Int = {
     val finalPosition = input.foldLeft((0.0,0.0))((position, direction) => move(position, direction))
     distance(finalPosition)
   }
 
-  def resolveSecond(input: List[String]) =
+  override def resolveSecond(input: List[String]): Int =
     input.foldLeft(((0.0,0.0), 0)) {
       case ((position, maxDistance), direction) =>
         val newPosition = move(position, direction)
         (newPosition, math.max(distance(newPosition), maxDistance))
     }._2
-
-  def main(args: Array[String]): Unit = {
-    println(s"[first star] ${resolveFirst(input)}")
-    println(s"[second star] ${resolveSecond(input)}")
-  }
 }

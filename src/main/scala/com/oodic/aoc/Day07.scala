@@ -1,13 +1,12 @@
 package com.oodic.aoc
 
-import scala.io.Source
 import scala.util.parsing.combinator._
 
-object Day07 extends RegexParsers {
-  val input = Source.fromResource("day7.txt").getLines.toList
+object Day07 extends PuzzleDay[List[String], String, Int] with RegexParsers {
+  override val input: List[String] = getInputFile
 
   case class SimpleNode(name: String, value: Int, children: Vector[String]) {
-    def getChildren(nodes: Map[String, SimpleNode]) = children.map(nodes)
+    def getChildren(nodes: Map[String, SimpleNode]): Vector[SimpleNode] = children.map(nodes)
 
     def toNode(nodes: Map[String, SimpleNode]): Node = Node(
       name,
@@ -36,16 +35,16 @@ object Day07 extends RegexParsers {
       .reduce(_ ++ _)
   }
 
-  def getRoot(nodes: Map[String, SimpleNode]) = {
+  def getRoot(nodes: Map[String, SimpleNode]): SimpleNode = {
     val nodeNames = nodes.keys.toVector
     val notRootNodeNames = nodes.values.toVector.flatMap(_.children).distinct
     val rootNodeName = (nodeNames diff notRootNodeNames).head
     nodes(rootNodeName)
   }
 
-  def resolveFirst(input: List[String]): String = getRoot(parseTree(input)).name
+  override def resolveFirst(input: List[String]): String = getRoot(parseTree(input)).name
 
-  def resolveSecond(input: List[String]): Int = {
+  override def resolveSecond(input: List[String]): Int = {
     val nodes = parseTree(input)
     val root = getRoot(nodes).toNode(nodes)
     def rec(node: Node): (Boolean, Int) = node.children match {
@@ -64,10 +63,5 @@ object Day07 extends RegexParsers {
       }
     }
     rec(root)._2
-  }
-
-  def main(args: Array[String]): Unit = {
-    println(s"[first star] ${resolveFirst(input)}")
-    println(s"[second star] ${resolveSecond(input)}")
   }
 }

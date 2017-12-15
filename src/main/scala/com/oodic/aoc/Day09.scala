@@ -1,21 +1,20 @@
 package com.oodic.aoc
 
-import scala.io.Source
 import scala.util.parsing.combinator.RegexParsers
 
-object Day09 extends RegexParsers {
-  val input = Source.fromResource("day9.txt").getLines.mkString
+object Day09 extends PuzzleDay[String, Int, Int] with RegexParsers {
+  override val input: String = getInputFile.mkString
 
   trait Block {
     def sum = 0
-    def charactInGarbage: Int
+    def charactersInGarbage: Int
   }
   case class Garbage(n: Int) extends Block {
-    override def charactInGarbage = n
+    override def charactersInGarbage: Int = n
   }
   case class Group(p: Int, blocks: List[Block]) extends Block {
-    override def sum = p + blocks.map(_.sum).sum
-    override def charactInGarbage: Int = blocks.map(_.charactInGarbage).sum
+    override def sum: Int = p + blocks.map(_.sum).sum
+    override def charactersInGarbage: Int = blocks.map(_.charactersInGarbage).sum
   }
 
   def garbageParser: Parser[Garbage] = for {
@@ -26,12 +25,7 @@ object Day09 extends RegexParsers {
     blocks <- '{' ~> repsep(groupParser(p+1) | garbageParser, ",") <~ '}'
   } yield Group(p, blocks)
 
-  def resolveFirst(input: String) = parse(groupParser(), input).get.sum
+  override def resolveFirst(input: String): Int = parse(groupParser(), input).get.sum
 
-  def resolveSecond(input: String) = parse(groupParser(), input).get.charactInGarbage
-
-  def main(args: Array[String]): Unit = {
-    println(s"[first star] ${resolveFirst(input)}")
-    println(s"[second star] ${resolveSecond(input)}")
-  }
+  override def resolveSecond(input: String): Int = parse(groupParser(), input).get.charactersInGarbage
 }
