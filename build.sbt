@@ -1,4 +1,4 @@
-name := """advent_of_code_2017"""
+name := """advent-of-code"""
 
 version := "1.0"
 
