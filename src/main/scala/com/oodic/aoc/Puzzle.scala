@@ -15,7 +15,15 @@ trait Puzzle[I,P1,P2] {
   def resolveSecond(input: I): P2
 
   def main(args: Array[String]): Unit = {
-    println(s"[1st star] ${resolveFirst(input)}")
-    println(s"[2nd star] ${resolveSecond(input)}")
+    val t0 = System.nanoTime
+    val part1 = resolveFirst(input)
+    val t1 = System.nanoTime
+
+    println(s"[1st star] $part1 (${(t1 - t0)/1000000}ms)")
+
+    val part2 = resolveSecond(input)
+    val t2 = System.nanoTime()
+
+    println(s"[2nd star] $part2 (${(t2 - t1)/1000000}ms)")
   }
 }
