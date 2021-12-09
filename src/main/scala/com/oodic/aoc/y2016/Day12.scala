@@ -55,9 +55,9 @@ object Day12 extends Puzzle2016[List[String], Int, Int] with RegexParsers {
         else execute(instructions, registers, i+1)
     }
 
-  override def resolveFirst(input: List[String]): Int =
+  override def part1(input: List[String]): Int =
     execute(input.map(parse(parseInstruction, _).get).toVector).getOrElse('a', 0)
 
-  override def resolveSecond(input: List[String]): Int =
+  override def part2(input: List[String]): Int =
     execute(input.map(parse(parseInstruction, _).get).toVector, Map('c' -> 1)).getOrElse('a', 0)
 }

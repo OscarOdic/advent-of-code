@@ -32,13 +32,13 @@ object Day09 extends Puzzle2020[List[Long], Long, Long] {
     }
 
 
-  override def resolveFirst(input: List[Long]): Long = {
+  override def part1(input: List[Long]): Long = {
     val (preamble, next) = input.splitAt(25)
     firstInvalidate(preamble, next)
   }
 
-  override def resolveSecond(input: List[Long]): Long = {
-    val invalidNumber = resolveFirst(input)
+  override def part2(input: List[Long]): Long = {
+    val invalidNumber = part1(input)
     val set = contiguousSet(invalidNumber, input.filter(_ != invalidNumber))
     set.min + set.max
   }

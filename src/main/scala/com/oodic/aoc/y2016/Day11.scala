@@ -11,7 +11,7 @@ object Day11 extends Puzzle2016[List[Int], Int, Int] {
       moves + resolve(items.updated(f._2 + 1, items(f._2 + 1) + f._1).updated(f._2, 0))
     }
 
-  override def resolveFirst(input: List[Int]): Int = resolve(input)
+  override def part1(input: List[Int]): Int = resolve(input)
 
-  override def resolveSecond(input: List[Int]): Int = resolve(input.updated(0, input.head + 4))
+  override def part2(input: List[Int]): Int = resolve(input.updated(0, input.head + 4))
 }

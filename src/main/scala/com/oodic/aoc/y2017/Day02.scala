@@ -5,13 +5,13 @@ object Day02 extends Puzzle2017[List[List[Int]], Int, Int] {
 
   def resolveWithF(input: List[List[Int]])(f: List[Int] => Int): Int = input.map(f).sum
 
-  override def resolveFirst(input: List[List[Int]]): Int = resolveWithF(input) { l =>
+  override def part1(input: List[List[Int]]): Int = resolveWithF(input) { l =>
     val min = l.min
     val max = l.max
     max - min
   }
 
-  override def resolveSecond(input: List[List[Int]]): Int = resolveWithF(input)(l =>
+  override def part2(input: List[List[Int]]): Int = resolveWithF(input)(l =>
     l.combinations(2).find {
       case List(first, second) => (first % second == 0) || (second % first == 0)
     }.map {

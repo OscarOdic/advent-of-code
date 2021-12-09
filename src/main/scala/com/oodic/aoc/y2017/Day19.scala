@@ -41,7 +41,7 @@ object Day19 extends Puzzle2017[Map[(Int, Int),String], String, Int]  {
     rec(input.filter { case ((_, y), value) => y == 0}.head._1)
   }
 
-  override def resolveFirst(input: Map[(Int, Int), String]): String = resolve(input)._1
+  override def part1(input: Map[(Int, Int), String]): String = resolve(input)._1
 
-  override def resolveSecond(input: Map[(Int, Int), String]): Int = resolve(input)._2
+  override def part2(input: Map[(Int, Int), String]): Int = resolve(input)._2
 }

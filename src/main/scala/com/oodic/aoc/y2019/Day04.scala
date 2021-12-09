@@ -17,11 +17,11 @@ object Day04 extends Puzzle2019[String, Int, Int] {
       }
   }
 
-  override def resolveFirst(input:  String): Int = input.split("-").map(_.toInt) match {
+  override def part1(input:  String): Int = input.split("-").map(_.toInt) match {
     case Array(min, max) => (min to max).map(_.toString).count(isPassword)
   }
 
-  override def resolveSecond(input:  String): Int = input.split("-").map(_.toInt) match {
+  override def part2(input:  String): Int = input.split("-").map(_.toInt) match {
     case Array(min, max) => (min to max).map(_.toString).count(isMoreRestrictivePassword)
   }
 }

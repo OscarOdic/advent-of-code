@@ -72,9 +72,9 @@ object Day08 extends Puzzle2016[List[String], Int, String] with RegexParsers {
     Vector.fill(6)(Vector.fill(50)(false))
   )
 
-  override def resolveFirst(input: List[String]): Int =
+  override def part1(input: List[String]): Int =
     resolve(input).map(_.count(identity)).sum
 
-  override def resolveSecond(input: List[String]): String =
+  override def part2(input: List[String]): String =
     "\n" + resolve(input).map(_.map(value => if (value) "#" else ".").mkString).mkString("\n")
 }

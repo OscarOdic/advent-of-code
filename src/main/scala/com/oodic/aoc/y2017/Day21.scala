@@ -63,9 +63,9 @@ object Day21 extends Puzzle2017[List[String], Int, Int] with RegexParsers {
     (0 until nbSteps).foldLeft(defaultPattern)((pattern, _) => transformPattern(pattern, rules._1, rules._2)).map(_.count(b => b)).sum
   }
 
-  override def resolveFirst(input: List[String]): Int =
+  override def part1(input: List[String]): Int =
     resolve(input, 5)
 
-  override def resolveSecond(input: List[String]): Int =
+  override def part2(input: List[String]): Int =
     resolve(input, 18)
 }

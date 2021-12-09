@@ -40,7 +40,7 @@ object Day03 extends Puzzle2017[Int, Int, Int] {
     getNeighbors(position).flatMap(grid.get).sum
 
 
-  override def resolveFirst(n: Int): Int = {
+  override def part1(n: Int): Int = {
     val side = getSide(n)
     val steps = (side-1)/2
     val cycle = n - math.pow(side - 2, 2).toInt
@@ -49,7 +49,7 @@ object Day03 extends Puzzle2017[Int, Int, Int] {
     steps + math.abs(innerOffset - steps)
   }
 
-  override def resolveSecond(n: Int): Int = {
+  override def part2(n: Int): Int = {
     def rec(grid: Map[(Int, Int), Int], position: (Int, Int), n: Int, direction: Direction): Int = {
       val newDirection = getDirection(position, direction)
       val newPosition = newDirection match {

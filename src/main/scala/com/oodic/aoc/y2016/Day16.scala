@@ -16,9 +16,9 @@ object Day16 extends Puzzle2016[String, String, String] {
     else fill(value + 0 + value.reverse.map(char => if (char == '1') '0' else '1'), n)
   }
 
-  override def resolveFirst(input: String): String =
+  override def part1(input: String): String =
     checkSum(fill(input, 272))
 
-  override def resolveSecond(input: String): String =
+  override def part2(input: String): String =
     checkSum(fill(input, 35651584))
 }

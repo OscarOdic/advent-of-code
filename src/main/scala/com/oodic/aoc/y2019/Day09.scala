@@ -93,7 +93,7 @@ object Day09 extends Puzzle2019[Vector[Long], Long, Long] {
     }
   }
 
-  override def resolveFirst(input: Vector[Long]): Long = execute(State(program = input, inputs = Queue(1)))._2.outputs.mkString.toLong
+  override def part1(input: Vector[Long]): Long = execute(State(program = input, inputs = Queue(1)))._2.outputs.mkString.toLong
 
-  override def resolveSecond(input: Vector[Long]): Long = execute(State(program = input, inputs = Queue(2)))._2.outputs.mkString.toLong
+  override def part2(input: Vector[Long]): Long = execute(State(program = input, inputs = Queue(2)))._2.outputs.mkString.toLong
 }

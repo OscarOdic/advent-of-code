@@ -11,9 +11,9 @@ object Day01 extends Puzzle2020[List[Int], Int, Int] {
       .map(_.product)
       .getOrElse(0)
 
-  override def resolveFirst(input: List[Int]): Int =
+  override def part1(input: List[Int]): Int =
     resolve(input, 2)
 
-  override def resolveSecond(input: List[Int]): Int =
+  override def part2(input: List[Int]): Int =
     resolve(input, 3)
 }

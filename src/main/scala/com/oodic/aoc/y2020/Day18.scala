@@ -42,7 +42,7 @@ object Day18 extends Enumeration with Puzzle2020[List[String], Long, Long] with 
     } yield (operator, operation))
   } yield OperationSimple(left, right)
 
-  override def resolveFirst(input: List[String]): Long =
+  override def part1(input: List[String]): Long =
     input
       .map(parse(parseOperation, _).get.evaluate).sum
 
@@ -98,6 +98,6 @@ object Day18 extends Enumeration with Puzzle2020[List[String], Long, Long] with 
   private def parseOperationComplex: Parser[Either[Long, OperationComplex]] =
     parseProductComplex ^^ (Right(_)) | parseSumComplex ^^ (Right(_)) | parseEitherComplex
 
-  override def resolveSecond(input: List[String]): Long =
+  override def part2(input: List[String]): Long =
     input.map(parse(parseOperationComplex, _).get.right.get.evaluate).sum
 }

@@ -15,7 +15,7 @@ object Day19 extends Puzzle2016[Int, Int, Int] {
     else pow + (2 * (nbElves - 2 * pow))
   }
 
-  override def resolveFirst(input: Int): Int = takeRight(input)
+  override def part1(input: Int): Int = takeRight(input)
 
-  override def resolveSecond(input: Int): Int = takeAcross(input)
+  override def part2(input: Int): Int = takeAcross(input)
 }

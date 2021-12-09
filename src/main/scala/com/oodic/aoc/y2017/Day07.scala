@@ -42,9 +42,9 @@ object Day07 extends Puzzle2017[List[String], String, Int] with RegexParsers {
     nodes(rootNodeName)
   }
 
-  override def resolveFirst(input: List[String]): String = getRoot(parseTree(input)).name
+  override def part1(input: List[String]): String = getRoot(parseTree(input)).name
 
-  override def resolveSecond(input: List[String]): Int = {
+  override def part2(input: List[String]): Int = {
     val nodes = parseTree(input)
     val root = getRoot(nodes).toNode(nodes)
     def rec(node: Node): (Boolean, Int) = node.children match {

@@ -31,7 +31,7 @@ object Day20 extends Puzzle2017[List[String], Int, Int] with RegexParsers {
     case (x,y,z) => math.abs(x) + math.abs(y) + math.abs(z)
   }
 
-  override def resolveFirst(input: List[String]): Int =
+  override def part1(input: List[String]): Int =
     input.map(parse(particleParser, _).get)
       .map { case Particle(p,v,a) => (sumTuple(a), sumTuple(v), sumTuple(p)) }
       .zipWithIndex
@@ -41,7 +41,7 @@ object Day20 extends Puzzle2017[List[String], Int, Int] with RegexParsers {
   private def executeList(particles: List[(Particle, Int)]) =
     particles.map { case (particle, id) => (particle.execute, id) }
 
-  override def resolveSecond(input: List[String]): Int =
+  override def part2(input: List[String]): Int =
     (0 until 100).foldLeft(input.map(parse(particleParser, _).get).zipWithIndex)((particles, _) => {
       val filtredParticles = particles.foldLeft(List.empty[(Particle, Int)])((list, particle) =>
         if (particles.exists(p => p._1.position == particle._1.position && p._2 != particle._2 )) list

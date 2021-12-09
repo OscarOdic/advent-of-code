@@ -24,7 +24,7 @@ object Day18 extends Puzzle2016[String, Int, Int] {
         (line, nbSafeTilesLine(line) + nbSafeTiles)
     }._2
 
-  override def resolveFirst(input: String): Int = nbSafeTilesTotal(input, 40)
+  override def part1(input: String): Int = nbSafeTilesTotal(input, 40)
 
-  override def resolveSecond(input: String): Int = nbSafeTilesTotal(input, 400000)
+  override def part2(input: String): Int = nbSafeTilesTotal(input, 400000)
 }

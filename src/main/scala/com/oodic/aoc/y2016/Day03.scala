@@ -23,9 +23,9 @@ object Day03 extends Puzzle2016[List[String], Int, Int] with RegexParsers {
         case List(x, y, z) => (x, y, z)
       }
 
-  override def resolveFirst(input: List[String]): Int =
+  override def part1(input: List[String]): Int =
     input.map(parse(triangleParser, _).get).count(isValid)
 
-  override def resolveSecond(input: List[String]): Int =
+  override def part2(input: List[String]): Int =
     convert(input.map(parse(triangleParser, _).get)).count(isValid)
 }

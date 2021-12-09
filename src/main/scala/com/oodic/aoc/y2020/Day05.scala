@@ -25,11 +25,11 @@ object Day05 extends Puzzle2020[List[List[Char]], Int, Int] {
       .map(codeToPlace)
       .map(pos => pos._1 * 8 + pos._2)
 
-  override def resolveFirst(input: List[List[Char]]): Int =
+  override def part1(input: List[List[Char]]): Int =
     getAllIds(input)
       .max
 
-  override def resolveSecond(input: List[List[Char]]): Int =
+  override def part2(input: List[List[Char]]): Int =
     getAllIds(input)
       .sorted
       .sliding(2)

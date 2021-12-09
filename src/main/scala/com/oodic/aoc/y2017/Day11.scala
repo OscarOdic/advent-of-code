@@ -26,12 +26,12 @@ object Day11 extends Puzzle2017[List[String], Int, Int] {
     }
   }
 
-  override def resolveFirst(input: List[String]): Int = {
+  override def part1(input: List[String]): Int = {
     val finalPosition = input.foldLeft((0.0,0.0))((position, direction) => move(position, direction))
     distance(finalPosition)
   }
 
-  override def resolveSecond(input: List[String]): Int =
+  override def part2(input: List[String]): Int =
     input.foldLeft(((0.0,0.0), 0)) {
       case ((position, maxDistance), direction) =>
         val newPosition = move(position, direction)

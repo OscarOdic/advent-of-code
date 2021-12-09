@@ -15,9 +15,9 @@ object Day01 extends Puzzle2021[List[Int], Int, Int] {
       .map(_.sum)
       .toList
 
-  override def resolveFirst(input: List[Int]): Int =
+  override def part1(input: List[Int]): Int =
     numberIncreased(input)
 
-  override def resolveSecond(input: List[Int]): Int =
+  override def part2(input: List[Int]): Int =
     numberIncreased(reportToWindows(input))
 }

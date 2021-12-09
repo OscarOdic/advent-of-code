@@ -40,9 +40,9 @@ object Day10 extends Puzzle2020[List[Int], Int, Long] {
   }
 
 
-  override def resolveFirst(input: List[Int]): Int =
+  override def part1(input: List[Int]): Int =
     getDifferencesWithAllAdapters(input.sorted).product
 
-  override def resolveSecond(input: List[Int]): Long =
+  override def part2(input: List[Int]): Long =
     getAllWays(input.sorted)._1
 }

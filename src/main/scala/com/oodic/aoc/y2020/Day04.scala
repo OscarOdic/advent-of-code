@@ -128,7 +128,7 @@ object Day04 extends Puzzle2020[List[List[String]], Int, Int] with RegexParsers 
 
   private val passportLineParser = rep1(fieldParser)
 
-  override def resolveFirst(input: List[List[String]]): Int =
+  override def part1(input: List[List[String]]): Int =
     input
       .map(_.flatMap(parse(passportLineParser, _).get))
       .count(passport =>
@@ -136,7 +136,7 @@ object Day04 extends Puzzle2020[List[List[String]], Int, Int] with RegexParsers 
           .forall(key => passport.exists(_.key == key))
       )
 
-  override def resolveSecond(input: List[List[String]]): Int =
+  override def part2(input: List[List[String]]): Int =
     input
       .map(_.flatMap(parse(passportLineParser, _).get))
       .count(passport =>

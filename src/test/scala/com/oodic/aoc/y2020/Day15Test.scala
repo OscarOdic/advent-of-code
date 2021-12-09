@@ -1,25 +1,26 @@
 package com.oodic.aoc.y2020
 
-import org.scalatest.{FlatSpec, Matchers}
+import org.scalatest.flatspec.AnyFlatSpec
+import org.scalatest.matchers.should.Matchers
 
-class Day15Test extends FlatSpec with Matchers {
+class Day15Test extends AnyFlatSpec with Matchers {
   val testInput = List(0, 3, 6)
 
-  "Day15 - 2020" should "answer first part" in {
-    Day15.resolveFirst(testInput) should be(436)
+  "Day15 - 2020" should "solve first part" in {
+    Day15.part1(testInput) should equal(436)
 
-    Day15.resolveFirst(Day15.input) should be(441)
+    Day15.part1(Day15.input) should equal(441)
   }
 
-  it should "answer second part" in {
-    Day15.resolveSecond(testInput) should be(175594)
-    Day15.resolveSecond(List(1, 3, 2)) should be(2578)
-    Day15.resolveSecond(List(2, 1, 3)) should be(3544142)
-    Day15.resolveSecond(List(1, 2, 3)) should be(261214)
-    Day15.resolveSecond(List(2, 3, 1)) should be(6895259)
-    Day15.resolveSecond(List(3, 2, 1)) should be(18)
-    Day15.resolveSecond(List(3, 1, 2)) should be(362)
+  it should "solve second part" in {
+    Day15.part2(testInput) should equal(175594)
+    Day15.part2(List(1, 3, 2)) should equal(2578)
+    Day15.part2(List(2, 1, 3)) should equal(3544142)
+    Day15.part2(List(1, 2, 3)) should equal(261214)
+    Day15.part2(List(2, 3, 1)) should equal(6895259)
+    Day15.part2(List(3, 2, 1)) should equal(18)
+    Day15.part2(List(3, 1, 2)) should equal(362)
 
-    Day15.resolveSecond(Day15.input) should be(10613991)
+    Day15.part2(Day15.input) should equal(10613991)
   }
 }

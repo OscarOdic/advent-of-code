@@ -21,7 +21,7 @@ object Day15 extends Puzzle2017[(Long, Long), Int, Int] {
         ((newA, newB), result + (if ((newA & 0xFFFF) == (newB & 0xFFFF)) 1 else 0))
     }._2
 
-  override def resolveFirst(input: (Long, Long)): Int = resolve(input, 40000000)
+  override def part1(input: (Long, Long)): Int = resolve(input, 40000000)
 
-  override def resolveSecond(input: (Long, Long)): Int = resolve(input, 5000000, 4, 8)
+  override def part2(input: (Long, Long)): Int = resolve(input, 5000000, 4, 8)
 }

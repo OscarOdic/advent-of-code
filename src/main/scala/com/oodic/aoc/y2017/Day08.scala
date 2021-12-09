@@ -67,13 +67,13 @@ object Day08 extends Puzzle2017[List[String], Int, Int] with RegexParsers {
     condition <- conditionParser
   } yield Instruction(operation, condition)
 
-  override def resolveFirst(instructions: List[String]): Int = instructions
+  override def part1(instructions: List[String]): Int = instructions
     .map(parse(instructionParser, _).get)
     .foldLeft(Map[String, Int]())((registers, instruction) => instruction.eval(registers))
     .maxBy(_._2)
     ._2
 
-  override def resolveSecond(instructions: List[String]): Int = instructions
+  override def part2(instructions: List[String]): Int = instructions
     .map(parse(instructionParser, _).get)
     .foldLeft((Map[String, Int](), 0)) {
       case ((registers, max), instruction) =>

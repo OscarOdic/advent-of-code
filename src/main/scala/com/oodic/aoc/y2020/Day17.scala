@@ -48,9 +48,9 @@ object Day17 extends Puzzle2020[List[String], Int, Int] {
       cells
   }
 
-  override def resolveFirst(input: List[String]): Int =
+  override def part1(input: List[String]): Int =
     execute(parseCells(input)).count(_._2)
 
-  override def resolveSecond(input: List[String]): Int =
+  override def part2(input: List[String]): Int =
     execute(parseCells(input, 4)).count(_._2)
 }

@@ -32,10 +32,10 @@ object Day14 extends Puzzle2017[List[List[Boolean]], Int, Int] {
     )
   }
 
-  override def resolveFirst(input: List[List[Boolean]]): Int =
+  override def part1(input: List[List[Boolean]]): Int =
     input.map(_.count(bit => bit)).sum
 
-  override def resolveSecond(input: List[List[Boolean]]): Int = {
+  override def part2(input: List[List[Boolean]]): Int = {
     def rec(grid: Map[(Int, Int), Int], group: Int = 1): Int = grid.find(_._2 == 0) match {
       case Some((c, _)) =>
         rec(

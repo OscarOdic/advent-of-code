@@ -26,12 +26,12 @@ object Day04 extends Puzzle2016[List[String], Int, Int] with RegexParsers {
       (if (newValue > 122) newValue - 26 else newValue).toChar
     }).mkString
 
-  override def resolveFirst(input: List[String]): Int =
+  override def part1(input: List[String]): Int =
     input.map(parse(roomParser, _).get)
       .filter(room => mostCommonLetters(room.name) == room.checksum)
       .map(_.id).sum
 
-  override def resolveSecond(input: List[String]): Int = {
+  override def part2(input: List[String]): Int = {
     def rec(rooms: List[Room] = input.map(parse(roomParser, _).get)): Int = rooms match {
       case h::_ if decode(h.name, h.id).contains("northpole") => h.id
       case _::t => rec(t)

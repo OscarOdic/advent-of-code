@@ -20,11 +20,11 @@ object Day08 extends Puzzle2019[Vector[Int], Int, String] {
     .map(_.mkString)
     .mkString("\n")
 
-  override def resolveFirst(input: Vector[Int]): Int = {
+  override def part1(input: Vector[Int]): Int = {
     val layer = getLayers(input).minBy(_.count(_ == 0))
     layer.count(_ == 1) * layer.count(_ == 2)
   }
 
-  override def resolveSecond(input: Vector[Int]): String =
+  override def part2(input: Vector[Int]): String =
     "\n" + layerToImage(fusionLayers(getLayers(input)))
 }

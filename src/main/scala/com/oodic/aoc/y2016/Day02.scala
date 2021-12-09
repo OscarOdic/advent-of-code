@@ -22,7 +22,7 @@ object Day02 extends Puzzle2016[List[String], String, String] {
         (newPosition, code + keyboard(newPosition))
     }._2
 
-  override def resolveFirst(input: List[String]): String = {
+  override def part1(input: List[String]): String = {
     val keyboard = Map(
       (-1, -1) -> '1',
       (0, -1) -> '2',
@@ -36,7 +36,7 @@ object Day02 extends Puzzle2016[List[String], String, String] {
     )
     resolve(keyboard, input)
   }
-  override def resolveSecond(input: List[String]): String = {
+  override def part2(input: List[String]): String = {
     val keyboard = Map(
       (2, -2) -> '1',
       (1, -1) -> '2',

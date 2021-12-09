@@ -19,12 +19,12 @@ object Day07 extends Puzzle2021[List[Int], Int, Int] {
       .map(index => align(crabs, index)(fuelFunction))
       .min
 
-  override def resolveFirst(input: List[Int]): Int =
+  override def part1(input: List[Int]): Int =
     minAlignment(input)((fuel, crab, index) =>
       fuel + math.abs(crab - index)
     )
 
-  override def resolveSecond(input: List[Int]): Int =
+  override def part2(input: List[Int]): Int =
     minAlignment(input)((fuel, crab, index) =>
       fuel + sumWholeNumbers(math.abs(crab - index))
     )

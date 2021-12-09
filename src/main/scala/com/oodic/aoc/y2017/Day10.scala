@@ -45,7 +45,7 @@ object Day10 extends Puzzle2017[String, Int, String] {
   def resolveFirstWithSize(input: String, size: Int = 256): Int =
     tieKnot(size, input.split(",").map(_.toInt).toList).take(2).product
 
-  override def resolveFirst(input: String): Int = resolveFirstWithSize(input)
+  override def part1(input: String): Int = resolveFirstWithSize(input)
 
-  override def resolveSecond(input: String): String = getHex(knotHash(input))
+  override def part2(input: String): String = getHex(knotHash(input))
 }

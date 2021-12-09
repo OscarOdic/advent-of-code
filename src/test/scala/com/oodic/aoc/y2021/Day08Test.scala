@@ -1,8 +1,9 @@
 package com.oodic.aoc.y2021
 
-import org.scalatest.{FlatSpec, Matchers}
+import org.scalatest.flatspec.AnyFlatSpec
+import org.scalatest.matchers.should.Matchers
 
-class Day08Test extends FlatSpec with Matchers {
+class Day08Test extends AnyFlatSpec with Matchers {
   val testInput = List(
     (List("be","cfbegad","cbdgef","fgaecd","cgeb","fdcge","agebfd","fecdb","fabcd","edb"), List("fdgacbe","cefdb","cefbgd","gcbe")),
     (List("edbfga","begcd","cbg","gc","gcadebf","fbgde","acbgfd","abcde","gfcbed","gfec"), List("fcgedb","cgb","dgebacf","gc")),
@@ -16,15 +17,15 @@ class Day08Test extends FlatSpec with Matchers {
     (List("gcafb","gcf","dcaebfg","ecagb","gf","abcdeg","gaef","cafbge","fdbac","fegbdc"), List("fgae","cfgab","fg","bagce"))
   )
 
-  "Day08 - 2021" should "answer first part" in {
-    Day08.resolveFirst(testInput) should be(26)
+  "Day08 - 2021" should "solve first part" in {
+    Day08.part1(testInput) should equal(26)
 
-    Day08.resolveFirst(Day08.input) should be(470)
+    Day08.part1(Day08.input) should equal(470)
   }
 
-  it should "answer second part" in {
-    Day08.resolveSecond(testInput) should be(61229)
+  it should "solve second part" in {
+    Day08.part2(testInput) should equal(61229)
 
-    Day08.resolveSecond(Day08.input) should be(989396)
+    Day08.part2(Day08.input) should equal(989396)
   }
 }

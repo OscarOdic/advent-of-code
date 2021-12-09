@@ -45,14 +45,14 @@ object Day01 extends Puzzle2016[ List[String], Int, Int] {
 
   private def getDistance(position: (Int, Int)) = math.abs(position._1) + math.abs(position._2)
 
-  override def resolveFirst(input: List[String]): Int =
+  override def part1(input: List[String]): Int =
     getDistance(toInstructions(input).foldLeft((North: Direction, (0, 0))) {
       case ((direction, position), instruction) =>
         val newDirection = getDirection(direction, instruction.orientation)
         (newDirection, getPosition(position, newDirection, instruction.value))
     }._2)
 
-  override def resolveSecond(input: List[String]): Int = {
+  override def part2(input: List[String]): Int = {
     def rec(
              position: (Int, Int) = (0, 0),
              direction: Direction = North,

@@ -95,14 +95,14 @@ object Day12 extends Enumeration with Puzzle2020[List[String], Int, Int] with Re
     value <- """\d+""".r ^^ (_.toInt)
   } yield Instruction(action, value)
 
-  override def resolveFirst(input: List[String]): Int =
+  override def part1(input: List[String]): Int =
     input
       .map(parse(instructionParser, _).get)
       .foldLeft(Ship())((ship, instruction) => instruction.executeFirstRule(ship)) match {
       case Ship(x, y, _, _, _) => math.abs(x) + math.abs(y)
     }
 
-  override def resolveSecond(input: List[String]): Int =
+  override def part2(input: List[String]): Int =
     input
       .map(parse(instructionParser, _).get)
       .foldLeft(Ship())((ship, instruction) => instruction.executeSecondRule(ship)) match {

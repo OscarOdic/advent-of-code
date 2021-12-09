@@ -34,9 +34,9 @@ object Day06 extends Puzzle2021[List[Long], Long, Long] {
         (newMap, sum + newMap.getOrElse((days, fish), 0L))
     }._2 + fishList.size
 
-  override def resolveFirst(input: List[Long]): Long =
+  override def part1(input: List[Long]): Long =
     execute(input, 80)
 
-  override def resolveSecond(input: List[Long]): Long =
+  override def part2(input: List[Long]): Long =
     execute(input, 256)
 }

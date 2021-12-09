@@ -49,10 +49,10 @@ object Day16 extends Puzzle2017[List[String], String, String] with RegexParsers 
         }
     }.mkString
 
-  override def resolveFirst(input: List[String]): String =
+  override def part1(input: List[String]): String =
     resolveWithPrograms(input)
 
-  override def resolveSecond(input: List[String]): String =
+  override def part2(input: List[String]): String =
     (0 until 1000000000).foldLeft(defaultPrograms, Map.empty[String, String]) {
       case ((programs, sequence), i) =>
         sequence.get(programs) match {

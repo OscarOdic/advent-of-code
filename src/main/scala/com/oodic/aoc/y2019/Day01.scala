@@ -12,7 +12,7 @@ object Day01 extends Puzzle2019[List[Int], Int, Int] with RegexParsers {
     case fuel => requiredFuel(fuel) + fuel
   }
 
-  override def resolveFirst(input: List[Int]): Int = input.map(getFuel).sum
+  override def part1(input: List[Int]): Int = input.map(getFuel).sum
 
-  override def resolveSecond(input: List[Int]): Int = input.map(requiredFuel).sum
+  override def part2(input: List[Int]): Int = input.map(requiredFuel).sum
 }

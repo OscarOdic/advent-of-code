@@ -1,9 +1,10 @@
 package com.oodic.aoc.y2020
 
-import org.scalatest.{FlatSpec, Matchers}
+import org.scalatest.flatspec.AnyFlatSpec
+import org.scalatest.matchers.should.Matchers
 
-class Day14Test extends FlatSpec with Matchers {
-  "Day14 - 2020" should "answer first part" in {
+class Day14Test extends AnyFlatSpec with Matchers {
+  "Day14 - 2020" should "solve first part" in {
     val testInput = List(
       "mask = XXXXXXXXXXXXXXXXXXXXXXXXXXXXX1XXXX0X",
       "mem[8] = 11",
@@ -11,12 +12,12 @@ class Day14Test extends FlatSpec with Matchers {
       "mem[8] = 0"
     )
 
-    Day14.resolveFirst(testInput) should be(165L)
+    Day14.part1(testInput) should equal(165L)
 
-    Day14.resolveFirst(Day14.input) should be(12512013221615L)
+    Day14.part1(Day14.input) should equal(12512013221615L)
   }
 
-  it should "answer second part" in {
+  it should "solve second part" in {
     val testInput = List(
       "mask = 000000000000000000000000000000X1001X",
       "mem[42] = 100",
@@ -24,8 +25,8 @@ class Day14Test extends FlatSpec with Matchers {
       "mem[26] = 1"
     )
 
-    Day14.resolveSecond(testInput) should be(208L)
+    Day14.part2(testInput) should equal(208L)
 
-    Day14.resolveSecond(Day14.input) should be(3905642473893L)
+    Day14.part2(Day14.input) should equal(3905642473893L)
   }
 }

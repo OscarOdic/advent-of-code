@@ -43,14 +43,14 @@ object Day04 extends Puzzle2018[List[String], Int, Int] with RegexParsers {
       case List(Asleep(start), Wakeup(end)) => (start.minutes until end.minutes).toList
     }.groupBy(identity).mapValues(_.size))
 
-  override def resolveFirst(input: List[String]): Int = {
+  override def part1(input: List[String]): Int = {
     val guards = asleepGuards(input.map(parse(operationParser, _).get))
     val mostAsleepGuard = guards.mapValues(_.values.sum).toList.sortBy(_._2)(Ordering[Int].reverse).head._1
     val mostAsleepMinute = guards(mostAsleepGuard).toList.sortBy(_._2)(Ordering[Int].reverse).head._1
     mostAsleepGuard * mostAsleepMinute
   }
 
-  override def resolveSecond(input: List[String]): Int = {
+  override def part2(input: List[String]): Int = {
     val (guard, minute, _) = asleepGuards(input.map(parse(operationParser, _).get)).foldLeft((0,0,0)) {
       case ((maxGuard, maxMinute, count), guard) =>
         val (newMin, newCount) = guard._2.toList.sortBy(_._2)(Ordering[Int].reverse).head

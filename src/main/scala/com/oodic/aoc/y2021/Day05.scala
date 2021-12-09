@@ -25,7 +25,7 @@ object Day05 extends Puzzle2021[List[String], Int, Int] with RegexParsers {
             x1, y1).toList
     }
 
-  override def resolveFirst(input: List[String]): Int =
+  override def part1(input: List[String]): Int =
     input
       .map(parse(parseVent, _).get)
       .filter {
@@ -34,7 +34,7 @@ object Day05 extends Puzzle2021[List[String], Int, Int] with RegexParsers {
       .groupBy(identity)
       .count(_._2.size >= 2)
 
-  override def resolveSecond(input: List[String]): Int =
+  override def part2(input: List[String]): Int =
     input
       .map(parse(parseVent, _).get)
       .flatMap(allCombinations)

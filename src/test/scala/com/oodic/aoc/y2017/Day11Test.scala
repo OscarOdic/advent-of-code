@@ -1,18 +1,19 @@
 package com.oodic.aoc.y2017
 
-import org.scalatest.{FlatSpec, Matchers}
+import org.scalatest.flatspec.AnyFlatSpec
+import org.scalatest.matchers.should.Matchers
 
-class Day11Test extends FlatSpec with Matchers {
-  "Day11 - 2017" should "answer first part" in {
-    Day11.resolveFirst(List("ne","ne","ne")) should be(3)
-    Day11.resolveFirst(List("ne","ne","sw","sw")) should be(0)
-    Day11.resolveFirst(List("ne","ne","s","s")) should be(2)
-    Day11.resolveFirst(List("se","sw","se","sw","sw")) should be(3)
+class Day11Test extends AnyFlatSpec with Matchers {
+  "Day11 - 2017" should "solve first part" in {
+    Day11.part1(List("ne","ne","ne")) should equal(3)
+    Day11.part1(List("ne","ne","sw","sw")) should equal(0)
+    Day11.part1(List("ne","ne","s","s")) should equal(2)
+    Day11.part1(List("se","sw","se","sw","sw")) should equal(3)
 
-    Day11.resolveFirst(Day11.input) should be(759)
+    Day11.part1(Day11.input) should equal(759)
   }
 
-  it should "answer second part" in {
-    Day11.resolveSecond(Day11.input) should be(1501)
+  it should "solve second part" in {
+    Day11.part2(Day11.input) should equal(1501)
   }
 }

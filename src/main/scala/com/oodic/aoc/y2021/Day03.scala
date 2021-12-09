@@ -33,10 +33,10 @@ object Day03 extends Puzzle2021[List[List[Int]], Int, Int] {
       rating(filtered, oxygen, index + 1)
     }
 
-  override def resolveFirst(input: List[List[Int]]): Int =
+  override def part1(input: List[List[Int]]): Int =
     power(input)
 
-  override def resolveSecond(input: List[List[Int]]): Int = {
+  override def part2(input: List[List[Int]]): Int = {
     val (oxygenGeneratorRating, co2ScrubberRating) = (
       rating(input, oxygen = true),
       rating(input, oxygen = false)

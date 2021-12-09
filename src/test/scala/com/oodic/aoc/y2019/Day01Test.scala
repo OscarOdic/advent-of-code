@@ -1,25 +1,26 @@
 package com.oodic.aoc.y2019
 
-import org.scalatest.{FlatSpec, Matchers}
+import org.scalatest.flatspec.AnyFlatSpec
+import org.scalatest.matchers.should.Matchers
 
-class Day01Test extends FlatSpec with Matchers {
-  "Day01 - 2019" should "answer first part" in {
-    Day01.resolveFirst(List(12)) should be(2)
-    Day01.resolveFirst(List(14)) should be(2)
-    Day01.resolveFirst(List(1969)) should be(654)
-    Day01.resolveFirst(List(100756)) should be(33583)
-    Day01.resolveFirst(List(12, 14, 1969, 100756)) should be(34241)
+class Day01Test extends AnyFlatSpec with Matchers {
+  "Day01 - 2019" should "solve first part" in {
+    Day01.part1(List(12)) should equal(2)
+    Day01.part1(List(14)) should equal(2)
+    Day01.part1(List(1969)) should equal(654)
+    Day01.part1(List(100756)) should equal(33583)
+    Day01.part1(List(12, 14, 1969, 100756)) should equal(34241)
 
-    Day01.resolveFirst(Day01.input) should be(3302760)
+    Day01.part1(Day01.input) should equal(3302760)
   }
 
-  it should "answer second part" in {
-    Day01.resolveSecond(List(12)) should be(2)
-    Day01.resolveSecond(List(14)) should be(2)
-    Day01.resolveSecond(List(1969)) should be(966)
-    Day01.resolveSecond(List(100756)) should be(50346)
-    Day01.resolveSecond(List(12, 14, 1969, 100756)) should be(51316)
+  it should "solve second part" in {
+    Day01.part2(List(12)) should equal(2)
+    Day01.part2(List(14)) should equal(2)
+    Day01.part2(List(1969)) should equal(966)
+    Day01.part2(List(100756)) should equal(50346)
+    Day01.part2(List(12, 14, 1969, 100756)) should equal(51316)
 
-    Day01.resolveSecond(Day01.input) should be(4951265)
+    Day01.part2(Day01.input) should equal(4951265)
   }
 }

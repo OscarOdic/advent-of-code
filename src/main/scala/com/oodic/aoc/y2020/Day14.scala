@@ -67,9 +67,9 @@ object Day14 extends Puzzle2020[List[String], BigInt, BigInt] with RegexParsers 
         memory.values.sum
     }
 
-  override def resolveFirst(input: List[String]): BigInt =
+  override def part1(input: List[String]): BigInt =
     execute(input.map(parse(parseInstruction, _).get))(version1)
 
-  override def resolveSecond(input: List[String]): BigInt =
+  override def part2(input: List[String]): BigInt =
     execute(input.map(parse(parseInstruction, _).get))(version2)
 }

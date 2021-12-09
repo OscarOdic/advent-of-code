@@ -18,7 +18,7 @@ object Day06 extends Puzzle2016[List[String], String, String] {
     ).mkString
   }
 
-  override def resolveFirst(input: List[String]): String = resolve(input)
+  override def part1(input: List[String]): String = resolve(input)
 
-  override def resolveSecond(input: List[String]): String = resolve(input, min)
+  override def part2(input: List[String]): String = resolve(input, min)
 }

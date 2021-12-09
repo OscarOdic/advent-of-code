@@ -23,7 +23,7 @@ object Day14 extends Puzzle2016[String, Int, Int] {
     }.map(_._2)
   }
 
-  override def resolveFirst(input: String): Int = getIndexFromKey(input)(63)
+  override def part1(input: String): Int = getIndexFromKey(input)(63)
 
-  override def resolveSecond(input: String): Int = getIndexFromKey(input, 2017)(63)
+  override def part2(input: String): Int = getIndexFromKey(input, 2017)(63)
 }

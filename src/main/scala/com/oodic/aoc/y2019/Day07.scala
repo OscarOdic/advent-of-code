@@ -90,12 +90,12 @@ object Day07 extends Puzzle2019[Vector[Int], Int, Int] {
     }
   }
 
-  override def resolveFirst(input: Vector[Int]): Int =
+  override def part1(input: Vector[Int]): Int =
     (0 to 4).permutations.map(
       seq => seq.foldLeft(0)((output, i) => execute(State(input, 0, Queue(i, output), Queue.empty))._2.outputs.mkString.toInt)
     ).max
 
-  override def resolveSecond(input: Vector[Int]): Int = {
+  override def part2(input: Vector[Int]): Int = {
     (5 to 9).permutations.map(amp =>
       feedbackLoop((Queue(amp.head, 0) +: amp.tail.map(v => Queue(v))).map(in => (Running, State(program = input, inputs = in))).toVector)
     ).max

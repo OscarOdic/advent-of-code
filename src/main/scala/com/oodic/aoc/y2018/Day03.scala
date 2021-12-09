@@ -27,10 +27,10 @@ object Day03 extends Puzzle2018[List[String], Int, Int] with RegexParsers {
       )
     )
 
-  override def resolveFirst(input: List[String]): Int =
+  override def part1(input: List[String]): Int =
     coordsClaims(input.map(parse(parseClaim, _).get)).count(_._2.size > 1)
 
-  override def resolveSecond(input: List[String]): Int = {
+  override def part2(input: List[String]): Int = {
     val claims = input.map(parse(parseClaim, _).get)
     val coords = coordsClaims(claims)
     claims.map(_.id).filterNot(id => coords.exists(coord => coord._2.contains(id) && coord._2.size > 1)).head

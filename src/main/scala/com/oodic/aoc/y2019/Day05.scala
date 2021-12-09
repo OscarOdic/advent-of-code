@@ -64,7 +64,7 @@ object Day05 extends Puzzle2019[Vector[Int], Int, Int] {
     }
   }
 
-  override def resolveFirst(input: Vector[Int]): Int = execute(input)
+  override def part1(input: Vector[Int]): Int = execute(input)
 
-  override def resolveSecond(input: Vector[Int]): Int = execute(input, 0, Queue(5))
+  override def part2(input: Vector[Int]): Int = execute(input, 0, Queue(5))
 }

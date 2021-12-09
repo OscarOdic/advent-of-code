@@ -25,7 +25,7 @@ object Day02 extends Puzzle2021[List[String], Int, Int] with RegexParsers{
 
   private val moveParser = forwardParser | upParser | downParser
 
-  override def resolveFirst(input: List[String]): Int =
+  override def part1(input: List[String]): Int =
     input.map(parse(moveParser, _).get).foldLeft((0, 0)) {
       case ((horizon, depth), Forward(x)) => (horizon + x, depth)
       case ((horizon, depth), Up(x)) => (horizon, depth - x)
@@ -34,7 +34,7 @@ object Day02 extends Puzzle2021[List[String], Int, Int] with RegexParsers{
       case (horizon, depth) => horizon * depth
     }
 
-  override def resolveSecond(input: List[String]): Int =
+  override def part2(input: List[String]): Int =
     input.map(parse(moveParser, _).get).foldLeft(((0, 0), 0)) {
       case (((horizon, depth), aim), Forward(x)) => ((horizon + x, depth + (aim * x)), aim)
       case ((pos, aim), Up(x)) => (pos, aim - x)

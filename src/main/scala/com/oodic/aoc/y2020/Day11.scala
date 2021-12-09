@@ -60,7 +60,7 @@ object Day11 extends Puzzle2020[Map[(Int, Int), Char], Int, Int] {
       executeRule(nextLayout, nextNoChanges)(occupiedRule, emptyRule)
     }
 
-  override def resolveFirst(input: Layout): Int =
+  override def part1(input: Layout): Int =
     executeRule(input)(
       occupiedRule = (layout: Layout, x: Int, y: Int) =>
         adjacentPos(x, y).count(layout.getOrElse(_, 'L') == '#') >= 4,
@@ -68,7 +68,7 @@ object Day11 extends Puzzle2020[Map[(Int, Int), Char], Int, Int] {
         adjacentPos(x, y).forall(List('L', '.') contains layout.getOrElse(_, 'L'))
     )._1.count(_._2 == '#')
 
-  override def resolveSecond(input: Layout): Int =
+  override def part2(input: Layout): Int =
     executeRule(input)(
       occupiedRule = (layout: Layout, x: Int, y: Int) =>
         visibleSeatsAround(layout, x, y).count(_ == '#') >= 5,

@@ -69,12 +69,12 @@ object Day08 extends Puzzle2020[Vector[String], Int, Int] with RegexParsers {
     }
 
 
-  override def resolveFirst(input: Vector[String]): Int =
+  override def part1(input: Vector[String]): Int =
     executeWithoutLoop(input
       .map(instruction => (parse(instructionParser, instruction).get, false))
     )._1
 
-  override def resolveSecond(input: Vector[String]): Int = {
+  override def part2(input: Vector[String]): Int = {
     val instructions = input
       .map(instruction => parse(instructionParser, instruction).get)
     executeUncorrupted(instructions, swapIndexPossibilities(instructions))

@@ -136,9 +136,9 @@ object Day11 extends Puzzle2019[Vector[Long], Int, String] {
       paintingRobot(newState.copy(inputs = Queue(colorPanel), outputs = Queue.empty), newMode, newPanel, newPosition, newDirection)
     }
 
-  override def resolveFirst(input: Vector[Long]): Int = paintingRobot(State(program = input, inputs = Queue(0))).size
+  override def part1(input: Vector[Long]): Int = paintingRobot(State(program = input, inputs = Queue(0))).size
 
-  override def resolveSecond(input: Vector[Long]): String = {
+  override def part2(input: Vector[Long]): String = {
     val painting = paintingRobot(State(program = input, inputs = Queue(1)), panels = Map((0, 0) -> true), start = true)
       .mapValues(if (_) "#" else ".")
     val ymin = painting.map(_._1._2).min

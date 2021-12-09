@@ -30,7 +30,7 @@ object Day06 extends Puzzle2018[List[String], Int, Int] with RegexParsers {
     ).groupBy(_._2).mapValues(_.size)
     .filter(_._1.isDefined)
 
-  override def resolveFirst(input: List[String]): Int = {
+  override def part1(input: List[String]): Int = {
     val coords = input.map(parse(coordsParser, _).get)
     val (minX, maxX, minY, maxY) = minMax(coords)
 
@@ -39,7 +39,7 @@ object Day06 extends Puzzle2018[List[String], Int, Int] with RegexParsers {
       .filter(t => t._1._2 == t._2._2).keys.map(_._2).max
   }
 
-  override def resolveSecond(input: List[String]): Int = {
+  override def part2(input: List[String]): Int = {
     val coords = input.map(parse(coordsParser, _).get)
     val (minX, maxX, minY, maxY) = minMax(coords)
     getMap(minX, maxX, minY, maxY).count(c1 => coords.map(manhattanDistance(c1, _)).sum < 10000)

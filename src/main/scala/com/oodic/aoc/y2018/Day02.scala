@@ -3,7 +3,7 @@ package com.oodic.aoc.y2018
 object Day02 extends Puzzle2018[List[String], Int, String] {
   override val input: List[String] = getInputFile
 
-  override def resolveFirst(input: List[String]): Int = {
+  override def part1(input: List[String]): Int = {
     val (two, three) = input.foldLeft((0, 0)){
       case ((two, three), value) =>
         val count = value.groupBy(identity).mapValues(_.size)
@@ -12,7 +12,7 @@ object Day02 extends Puzzle2018[List[String], Int, String] {
     two * three
   }
 
-  override def resolveSecond(input: List[String]): String = (for {
+  override def part2(input: List[String]): String = (for {
     a <- input
     b <- input
     filtered = a.zip(b).filter(t => t._1 == t._2)

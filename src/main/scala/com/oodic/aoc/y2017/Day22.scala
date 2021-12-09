@@ -87,7 +87,7 @@ object Day22 extends Puzzle2017[Map[(Int, Int), Boolean], Int, Int] {
     }._2
   }
 
-  override def resolveFirst(input: Map[(Int, Int), Boolean]): Int = resolve(input)
+  override def part1(input: Map[(Int, Int), Boolean]): Int = resolve(input)
 
-  override def resolveSecond(input: Map[(Int, Int), Boolean]): Int = resolve(input, 10000000, secondPuzzle = true)
+  override def part2(input: Map[(Int, Int), Boolean]): Int = resolve(input, 10000000, secondPuzzle = true)
 }

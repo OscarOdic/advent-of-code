@@ -46,7 +46,7 @@ object Day16 extends Puzzle2020[(List[String], List[String], List[String]), Int,
         case (min, max) => value >= min && value <= max
       }))
 
-  override def resolveFirst(input: (List[String], List[String], List[String])): Int =
+  override def part1(input: (List[String], List[String], List[String])): Int =
     parseNote(input) match {
       case Note(rules, yourTicket, nearbyTickets) =>
         (yourTicket +: nearbyTickets).flatMap(ticket => invalidValues(rules, ticket))
@@ -76,7 +76,7 @@ object Day16 extends Puzzle2020[(List[String], List[String], List[String]), Int,
           }
       }._1
 
-  override def resolveSecond(input: (List[String], List[String], List[String])): Long =
+  override def part2(input: (List[String], List[String], List[String])): Long =
     parseNote(input) match {
       case Note(rules, yourTicket, nearbyTickets) =>
         val validTickets = (yourTicket +: nearbyTickets).filter(isValid(rules, _))

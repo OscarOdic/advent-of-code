@@ -32,9 +32,9 @@ object Day20 extends Puzzle2016[List[String], Long, Int] with RegexParsers {
     rec()
   }
 
-  override def resolveFirst(input: List[String]): Long =
+  override def part1(input: List[String]): Long =
     lowestAllowedIp(input.map(parse(rangeParser, _).get))
 
-  override def resolveSecond(input: List[String]): Int =
+  override def part2(input: List[String]): Int =
     numAllowedIp(input.map(parse(rangeParser, _).get))
 }

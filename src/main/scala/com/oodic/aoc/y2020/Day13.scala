@@ -18,7 +18,7 @@ object Day13 extends Puzzle2020[(Int, List[String]), Int, Long] {
     } % product
   }
 
-  override def resolveFirst(input: (Int, List[String])): Int =
+  override def part1(input: (Int, List[String])): Int =
     input._2
       .filter(_ != "x")
       .map(_.toInt)
@@ -27,7 +27,7 @@ object Day13 extends Puzzle2020[(Int, List[String]), Int, Long] {
       case (bus, wait) => bus * wait
     }
 
-  override def resolveSecond(input: (Int, List[String])): Long =
+  override def part2(input: (Int, List[String])): Long =
     chineseReminder(input._2
       .zipWithIndex
       .filter(_._1 != "x")

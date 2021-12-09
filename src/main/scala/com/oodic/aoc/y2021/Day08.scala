@@ -33,12 +33,12 @@ object Day08 extends Puzzle2021[List[(List[String], List[String])], Int, Int] {
       .map(_.swap)
   }
 
-  override def resolveFirst(input: List[(List[String], List[String])]): Int =
+  override def part1(input: List[(List[String], List[String])]): Int =
     input.map {
       case (_, right) => right.count(number => List(2, 3, 4, 7).contains(number.length))
     }.sum
 
-  override def resolveSecond(input: List[(List[String], List[String])]): Int =
+  override def part2(input: List[(List[String], List[String])]): Int =
     input
       .map {
         case (left, right) =>

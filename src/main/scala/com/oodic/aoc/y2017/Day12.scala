@@ -20,12 +20,12 @@ object Day12 extends Puzzle2017[List[String], Int, Int] with RegexParsers {
     rec()
   }
 
-  override def resolveFirst(input: List[String]): Int = {
+  override def part1(input: List[String]): Int = {
     val communications = input.map(parse(communicationParser, _).get).reduce(_ ++ _)
     getGroup(0, communications).size
   }
 
-  override def resolveSecond(input: List[String]): Int = {
+  override def part2(input: List[String]): Int = {
     val communications = input.map(parse(communicationParser, _).get).reduce(_ ++ _)
     def rec(keys: List[Int] = communications.keys.toList, n: Int = 0): Int = keys match {
       case Nil => n

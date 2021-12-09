@@ -11,7 +11,7 @@ object Day01 extends Puzzle2017[Seq[Int], Int, Int] {
     case (acc, _) => acc
   }
 
-  override def resolveFirst(list: Seq[Int]): Int = resolveWithN(list, 1)
+  override def part1(list: Seq[Int]): Int = resolveWithN(list, 1)
 
-  override def resolveSecond(list: Seq[Int]): Int = resolveWithN(list, list.size/2)
+  override def part2(list: Seq[Int]): Int = resolveWithN(list, list.size/2)
 }

@@ -17,10 +17,10 @@ object Day03 extends Puzzle2020[Vector[Vector[Char]], Int, Int] {
     else
       (if (map(pos._2)(pos._1 % map(0).size)) 1 else 0) + countTreesOnToboggan(map, next(pos))(next)
 
-  override def resolveFirst(input: Vector[Vector[Char]]): Int =
+  override def part1(input: Vector[Vector[Char]]): Int =
     countTreesOnToboggan(parseMap(input))()
 
-  override def resolveSecond(input: Vector[Vector[Char]]): Int =
+  override def part2(input: Vector[Vector[Char]]): Int =
     List(
       (1, 1),
       (3, 1),

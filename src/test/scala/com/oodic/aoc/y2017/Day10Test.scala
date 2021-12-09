@@ -1,19 +1,20 @@
 package com.oodic.aoc.y2017
 
-import org.scalatest.{FlatSpec, Matchers}
+import org.scalatest.flatspec.AnyFlatSpec
+import org.scalatest.matchers.should.Matchers
 
-class Day10Test extends FlatSpec with Matchers {
-  "Day10 - 2017" should "answer first part" in {
-    Day10.resolveFirstWithSize("3,4,1,5", 5) should be(12)
+class Day10Test extends AnyFlatSpec with Matchers {
+  "Day10 - 2017" should "solve first part" in {
+    Day10.resolveFirstWithSize("3,4,1,5", 5) should equal(12)
 
-    Day10.resolveFirst(Day10.input) should be(1935)
+    Day10.part1(Day10.input) should equal(1935)
   }
 
-  it should "answer second part" in {
-    Day10.resolveSecond("AoC 2017") should be("33efeb34ea91902bb2f59c9920caa6cd")
-    Day10.resolveSecond("1,2,3") should be("3efbe78a8d82f29979031a4aa0b16a9d")
-    Day10.resolveSecond("1,2,4") should be("63960835bcdc130f0b66d7ff4f6a5a8e")
+  it should "solve second part" in {
+    Day10.part2("AoC 2017") should equal("33efeb34ea91902bb2f59c9920caa6cd")
+    Day10.part2("1,2,3") should equal("3efbe78a8d82f29979031a4aa0b16a9d")
+    Day10.part2("1,2,4") should equal("63960835bcdc130f0b66d7ff4f6a5a8e")
 
-    Day10.resolveSecond(Day10.input) should be("dc7e7dee710d4c7201ce42713e6b8359")
+    Day10.part2(Day10.input) should equal("dc7e7dee710d4c7201ce42713e6b8359")
   }
 }

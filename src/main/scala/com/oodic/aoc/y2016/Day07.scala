@@ -26,10 +26,10 @@ object Day07 extends Puzzle2016[List[String], Int, Int] with RegexParsers {
 
   private def getAba(value: String) = value.sliding(3).filter(abbaOrAba).toList
 
-  override def resolveFirst(input: List[String]): Int =
+  override def part1(input: List[String]): Int =
     input.map(parse(ipParser, _).get).count(ip => ip.outside.exists(hasAbba) && !ip.inside.exists(hasAbba))
 
-  override def resolveSecond(input: List[String]): Int =
+  override def part2(input: List[String]): Int =
     input.map(parse(ipParser, _).get).count(ip =>
       ip.outside.flatMap(getAba).exists(aba => ip.inside.exists(hasAbaReverse(aba)))
     )

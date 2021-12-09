@@ -70,12 +70,12 @@ object Day10 extends Puzzle2016[List[String], Int, Int] with RegexParsers {
     }
   }
 
-  override def resolveFirst(input: List[String]): Int = {
+  override def part1(input: List[String]): Int = {
     val (init, gives) = initBots(input.map(parse(parseInstruction, _).get))
     getResponsible(17, 61, init, gives)
   }
 
-  override def resolveSecond(input: List[String]): Int = {
+  override def part2(input: List[String]): Int = {
     val (init, gives) = initBots(input.map(parse(parseInstruction, _).get))
     val outputs = executeAll(init, Map(), gives)._2
     outputs(0) * outputs(1) * outputs(2)

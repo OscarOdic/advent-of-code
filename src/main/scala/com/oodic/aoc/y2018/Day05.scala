@@ -17,9 +17,9 @@ object Day05 extends Puzzle2018[String, Int, Int] {
     else reductPolymers(reducted)
   }
 
-  override def resolveFirst(input: String): Int = reductPolymers(input).length
+  override def part1(input: String): Int = reductPolymers(input).length
 
-  override def resolveSecond(input: String): Int =
+  override def part2(input: String): Int =
     lettersToRemove.par
       .map(letters => reductPolymers(letters.foldLeft(input)((polymers, letter) => polymers.replace(letter, ""))).length)
       .min

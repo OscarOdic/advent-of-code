@@ -19,9 +19,9 @@ object Day15 extends Puzzle2016[List[String], Int, Int] with RegexParsers {
       }
     ).getOrElse(-1)
 
-  override def resolveFirst(input: List[String]): Int =
+  override def part1(input: List[String]): Int =
     resolve(input.map(parse(parseDisc, _).get))
 
-  override def resolveSecond(input: List[String]): Int =
+  override def part2(input: List[String]): Int =
     resolve(input.map(parse(parseDisc, _).get) :+ Disc(11, 0))
 }

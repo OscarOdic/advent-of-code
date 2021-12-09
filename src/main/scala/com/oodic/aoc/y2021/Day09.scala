@@ -2,17 +2,11 @@ package com.oodic.aoc.y2021
 
 object Day09 extends Puzzle2021[Map[(Int, Int), Int], Int, Int] {
   override val input: Map[(Int, Int), Int] =
-    getInputFile
-      .zipWithIndex
-      .flatMap {
-        case (line, y) =>
-          line
-            .zipWithIndex
-            .map {
-              case (c, x) =>
-                (x, y) -> c.asDigit
-            }
-      }.toMap
+    (for {
+      (line, y) <- getInputFile.zipWithIndex
+      (value, x) <- line.zipWithIndex
+    } yield (x, y) -> value.asDigit)
+      .toMap
 
   private def neighbors(x: Int, y: Int): List[(Int, Int)] =
     List((x, y - 1), (x, y + 1), (x - 1, y), (x + 1, y))
@@ -56,12 +50,12 @@ object Day09 extends Puzzle2021[Map[(Int, Int), Int], Int, Int] {
         case ((x, y), _) => getBasin(x, y, heightMap, List((x, y)))._2.size
       }
 
-  override def resolveFirst(input: Map[(Int, Int), Int]): Int =
+  override def part1(input: Map[(Int, Int), Int]): Int =
     lowNumbers(input)
       .map(_._2 + 1)
       .sum
 
-  override def resolveSecond(input: Map[(Int, Int), Int]): Int =
+  override def part2(input: Map[(Int, Int), Int]): Int =
     getBasinSizes(input)
       .sorted(Ordering.Int.reverse)
       .take(3)

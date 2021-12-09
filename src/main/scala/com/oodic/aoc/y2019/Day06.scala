@@ -30,11 +30,11 @@ object Day06 extends Puzzle2019[Vector[String], Int, Int] {
     distancePath(pathObj1.toList, rootObjs) + distancePath(pathObj2.toList, rootObjs) - 4
   }
 
-  override def resolveFirst(input: Vector[String]): Int = {
+  override def part1(input: Vector[String]): Int = {
     val edges = input.map(parseEdge)
     val objects = edges.map(_._1).distinct
     objects.map(countOrbits(edges, _)).sum
   }
 
-  override def resolveSecond(input: Vector[String]): Int = distanceBetweenTwoObjects(input.map(parseEdge), "YOU", "SAN", "COM")
+  override def part2(input: Vector[String]): Int = distanceBetweenTwoObjects(input.map(parseEdge), "YOU", "SAN", "COM")
 }

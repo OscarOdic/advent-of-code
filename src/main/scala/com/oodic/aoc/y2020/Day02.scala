@@ -15,7 +15,7 @@ object Day02 extends Puzzle2020[List[String], Int, Int] with RegexParsers {
     password <- """.*""".r
   } yield Password(policyNumber1, policyNumber2, letter, password)
 
-  override def resolveFirst(input: List[String]): Int =
+  override def part1(input: List[String]): Int =
     input
       .map(parse(passwordParser, _).get)
       .count {
@@ -24,7 +24,7 @@ object Day02 extends Puzzle2020[List[String], Int, Int] with RegexParsers {
           countLetter >= min && countLetter <= max
       }
 
-  override def resolveSecond(input: List[String]): Int =
+  override def part2(input: List[String]): Int =
     input
       .map(parse(passwordParser, _).get)
       .count {

@@ -68,9 +68,9 @@ object Day04 extends Puzzle2021[(List[Int], List[List[List[Int]]]), Int, Int] {
       } yield n * getUnMarked(board).sum).getOrElse(0)
     }
 
-  override def resolveFirst(input: (List[Int], List[Board])): Int =
+  override def part1(input: (List[Int], List[Board])): Int =
     firstWin(input._1, input._2.map(toBoardMarked))
 
-  override def resolveSecond(input: (List[Int], List[Board])): Int =
+  override def part2(input: (List[Int], List[Board])): Int =
     lastWin(input._1, input._2.map(toBoardMarked))
 }

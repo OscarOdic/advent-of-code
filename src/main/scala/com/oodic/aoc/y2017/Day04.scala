@@ -7,10 +7,10 @@ object Day04 extends Puzzle2017[List[String], Int, Int] {
     f(password.split(" "))
   })
 
-  override def resolveFirst(passwords: List[String]): Int =
+  override def part1(passwords: List[String]): Int =
     resolveWithF(passwords)(words => words.distinct equals words)
 
-  override def resolveSecond(passwords: List[String]): Int =
+  override def part2(passwords: List[String]): Int =
     resolveWithF(passwords)(words => {
       val sortedWords = words.map(_.sorted)
       sortedWords.distinct equals sortedWords

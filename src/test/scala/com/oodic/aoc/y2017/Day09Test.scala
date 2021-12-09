@@ -1,29 +1,30 @@
 package com.oodic.aoc.y2017
 
-import org.scalatest.{FlatSpec, Matchers}
+import org.scalatest.flatspec.AnyFlatSpec
+import org.scalatest.matchers.should.Matchers
 
-class Day09Test extends FlatSpec with Matchers {
-  "Day09 - 2017" should "answer first part" in {
-    Day09.resolveFirst("{}") should be(1)
-    Day09.resolveFirst("{{{}}}") should be(6)
-    Day09.resolveFirst("{{},{}}") should be(5)
-    Day09.resolveFirst("{{{},{},{{}}}}") should be(16)
-    Day09.resolveFirst("{<a>,<a>,<a>,<a>}") should be(1)
-    Day09.resolveFirst("{{<ab>},{<ab>},{<ab>},{<ab>}}") should be(9)
-    Day09.resolveFirst("{{<!!>},{<!!>},{<!!>},{<!!>}}") should be(9)
-    Day09.resolveFirst("{{<a!>},{<a!>},{<a!>},{<ab>}}") should be(3)
+class Day09Test extends AnyFlatSpec with Matchers {
+  "Day09 - 2017" should "solve first part" in {
+    Day09.part1("{}") should equal(1)
+    Day09.part1("{{{}}}") should equal(6)
+    Day09.part1("{{},{}}") should equal(5)
+    Day09.part1("{{{},{},{{}}}}") should equal(16)
+    Day09.part1("{<a>,<a>,<a>,<a>}") should equal(1)
+    Day09.part1("{{<ab>},{<ab>},{<ab>},{<ab>}}") should equal(9)
+    Day09.part1("{{<!!>},{<!!>},{<!!>},{<!!>}}") should equal(9)
+    Day09.part1("{{<a!>},{<a!>},{<a!>},{<ab>}}") should equal(3)
 
-    Day09.resolveFirst(Day09.input) should be(9251)
+    Day09.part1(Day09.input) should equal(9251)
   }
 
-  it should "answer second part" in {
-    Day09.resolveSecond("{<>}") should be(0)
-    Day09.resolveSecond("{<<<<>}") should be(3)
-    Day09.resolveSecond("{<{!>}>}") should be(2)
-    Day09.resolveSecond("{<!!>}") should be(0)
-    Day09.resolveSecond("{<!!!>>}") should be(0)
-    Day09.resolveSecond("{<{o\"i!a,<{i<a>}") should be(10)
+  it should "solve second part" in {
+    Day09.part2("{<>}") should equal(0)
+    Day09.part2("{<<<<>}") should equal(3)
+    Day09.part2("{<{!>}>}") should equal(2)
+    Day09.part2("{<!!>}") should equal(0)
+    Day09.part2("{<!!!>>}") should equal(0)
+    Day09.part2("{<{o\"i!a,<{i<a>}") should equal(10)
 
-    Day09.resolveSecond(Day09.input) should be(4322)
+    Day09.part2(Day09.input) should equal(4322)
   }
 }

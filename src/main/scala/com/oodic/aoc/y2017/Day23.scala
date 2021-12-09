@@ -73,10 +73,10 @@ object Day23 extends Puzzle2017[Vector[String], Int, Int] with RegexParsers {
     if (program.index < 0 || program.index >= instructions.size) program
     else execute(program.next(instructions), instructions)
 
-  override def resolveFirst(input: Vector[String]): Int =
+  override def part1(input: Vector[String]): Int =
     execute(Program(), input.map(parse(instructionParser, _).get)).nbMul
 
-  override def resolveSecond(input: Vector[String]): Int = {
+  override def part2(input: Vector[String]): Int = {
     val instructions = input.map(_.split(" "))
     val b = instructions(0)(2).toInt * instructions(4)(2).toInt - instructions(5)(2).toInt
     val c = b - instructions(7)(2).toInt

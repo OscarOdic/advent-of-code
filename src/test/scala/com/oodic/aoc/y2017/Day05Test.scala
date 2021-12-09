@@ -1,17 +1,18 @@
 package com.oodic.aoc.y2017
 
-import org.scalatest.{FlatSpec, Matchers}
+import org.scalatest.flatspec.AnyFlatSpec
+import org.scalatest.matchers.should.Matchers
 
-class Day05Test extends FlatSpec with Matchers {
-  "Day05 - 2017" should "answer first part" in {
-    Day05.resolveFirst(Vector(0,3,0,1,-3)) should be(5)
+class Day05Test extends AnyFlatSpec with Matchers {
+  "Day05 - 2017" should "solve first part" in {
+    Day05.part1(Vector(0,3,0,1,-3)) should equal(5)
 
-    Day05.resolveFirst(Day05.input) should be(356945)
+    Day05.part1(Day05.input) should equal(356945)
   }
 
-  it should "answer second part" in {
-    Day05.resolveSecond(Vector(0,3,0,1,-3)) should be(10)
+  it should "solve second part" in {
+    Day05.part2(Vector(0,3,0,1,-3)) should equal(10)
 
-    Day05.resolveSecond(Day05.input) should be(28372145)
+    Day05.part2(Day05.input) should equal(28372145)
   }
 }

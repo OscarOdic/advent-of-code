@@ -41,7 +41,7 @@ object Day13 extends Puzzle2016[Int, Int, Int] {
       nbSteps-1
     )
 
-  override def resolveFirst(input: Int): Int = reachPosition((31, 39), input)
+  override def part1(input: Int): Int = reachPosition((31, 39), input)
 
-  override def resolveSecond(input: Int): Int = getPositions(input)
+  override def part2(input: Int): Int = getPositions(input)
 }

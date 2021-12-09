@@ -35,7 +35,7 @@ object Day06 extends Puzzle2017[Vector[Int], Long, Long] {
     rec(bank)
   }
 
-  override def resolveFirst(input: Vector[Int]): Long = resolve(input)._1
+  override def part1(input: Vector[Int]): Long = resolve(input)._1
 
-  override def resolveSecond(input: Vector[Int]): Long = resolve(input)._2
+  override def part2(input: Vector[Int]): Long = resolve(input)._2
 }

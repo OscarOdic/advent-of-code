@@ -98,9 +98,9 @@ object Day21 extends Puzzle2016[List[String], String, String] with RegexParsers 
   private def execute(instruction: List[Instruction], value: String) =
     instruction.foldLeft(value)((newValue, instruction) => instruction.execute(newValue))
 
-  override def resolveFirst(input: List[String]): String =
+  override def part1(input: List[String]): String =
     execute(input.map(parse(instructionParser, _).get), "abcdefgh")
 
-  override def resolveSecond(input: List[String]): String =
+  override def part2(input: List[String]): String =
     execute(input.map(parse(instructionParser, _).get).reverseMap(_.reverse), "fbgdceah")
 }

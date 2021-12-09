@@ -29,10 +29,10 @@ object Day24 extends Puzzle2017[Vector[String], Int, Int] with RegexParsers {
     left +: right +: (leftBridges ++ rightBridges)
   }
 
-  override def resolveFirst(input: Vector[String]): Int =
+  override def part1(input: Vector[String]): Int =
     getAllBridges(input.map(parse(commandParser, _).get)).map(getStrength).max
 
-  override def resolveSecond(input: Vector[String]): Int = {
+  override def part2(input: Vector[String]): Int = {
     val bridges = getAllBridges(input.map(parse(commandParser, _).get))
     val maxLong = bridges.map(_.size).max
     bridges.filter(_.size == maxLong).map(getStrength).max

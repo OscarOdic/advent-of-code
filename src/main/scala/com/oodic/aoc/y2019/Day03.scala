@@ -49,13 +49,13 @@ object Day03 extends Puzzle2019[Vector[List[String]], Int, Int] with RegexParser
       case _ => min
     })
 
-  override def resolveFirst(input: Vector[List[String]]): Int = {
+  override def part1(input: Vector[List[String]]): Int = {
     val firstMove = getPoints(input(0).map(parse(operationParser, _).get))
     val secondMove = getPoints(input(1).map(parse(operationParser, _).get))
     closetDistance(firstMove intersect secondMove)
   }
 
-  override def resolveSecond(input: Vector[List[String]]): Int = {
+  override def part2(input: Vector[List[String]]): Int = {
     val firstMove = getPoints(input(0).map(parse(operationParser, _).get))
     println(firstMove)
     val secondMove = getPoints(input(1).map(parse(operationParser, _).get))

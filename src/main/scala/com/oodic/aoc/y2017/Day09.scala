@@ -25,7 +25,7 @@ object Day09 extends Puzzle2017[String, Int, Int] with RegexParsers {
     blocks <- '{' ~> repsep(groupParser(p+1) | garbageParser, ",") <~ '}'
   } yield Group(p, blocks)
 
-  override def resolveFirst(input: String): Int = parse(groupParser(), input).get.sum
+  override def part1(input: String): Int = parse(groupParser(), input).get.sum
 
-  override def resolveSecond(input: String): Int = parse(groupParser(), input).get.charactersInGarbage
+  override def part2(input: String): Int = parse(groupParser(), input).get.charactersInGarbage
 }

@@ -51,7 +51,7 @@ object Day17 extends Puzzle2016[String, String, Int] {
     rec()
   }
 
-  override def resolveFirst(input: String): String = shortestPath(input)
+  override def part1(input: String): String = shortestPath(input)
 
-  override def resolveSecond(input: String): Int = longestPath(input)
+  override def part2(input: String): Int = longestPath(input)
 }

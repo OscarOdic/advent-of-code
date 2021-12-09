@@ -46,12 +46,12 @@ object Day07 extends Puzzle2020[List[String], Int, Int] with RegexParsers {
     }
 
 
-  override def resolveFirst(input: List[String]): Int =
+  override def part1(input: List[String]): Int =
     containBag(input
       .map(parse(bagParser, _).get), "shiny gold")
       .size
 
-  override def resolveSecond(input: List[String]): Int =
+  override def part2(input: List[String]): Int =
     numbersBag(input
       .map(parse(bagParser, _).get), "shiny gold")
 }

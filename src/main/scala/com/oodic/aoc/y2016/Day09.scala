@@ -36,7 +36,7 @@ object Day09 extends Puzzle2016[String, Long, Long] with RegexParsers {
   private def completeDecompressed(compressed: String): Long =
     parse(decompressParser, compressed).get.map(_.completeDecompressedLength).sum
 
-  override def resolveFirst(input: String): Long = simpleDecompressed(input)
+  override def part1(input: String): Long = simpleDecompressed(input)
 
-  override def resolveSecond(input: String): Long = completeDecompressed(input)
+  override def part2(input: String): Long = completeDecompressed(input)
 }

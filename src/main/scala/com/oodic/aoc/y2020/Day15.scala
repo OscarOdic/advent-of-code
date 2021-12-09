@@ -19,9 +19,9 @@ object Day15 extends Puzzle2020[List[Int], Int, Int] {
             })
       }._2
 
-  override def resolveFirst(input: List[Int]): Int =
+  override def part1(input: List[Int]): Int =
     play(initSpoken(input), input.size + 1)
 
-  override def resolveSecond(input: List[Int]): Int =
+  override def part2(input: List[Int]): Int =
     play(initSpoken(input), input.size + 1, 30000000)
 }

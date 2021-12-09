@@ -1,21 +1,22 @@
 package com.oodic.aoc.y2017
 
-import org.scalatest.{FlatSpec, Matchers}
+import org.scalatest.flatspec.AnyFlatSpec
+import org.scalatest.matchers.should.Matchers
 
-class Day16Test extends FlatSpec with Matchers {
+class Day16Test extends AnyFlatSpec with Matchers {
   val testInput = List(
     "s1",
     "x3/4",
     "pe/b"
   )
 
-  "Day16 - 2017" should "answer first part" in {
-    Day16.resolveWithPrograms(testInput, "abcde") should be("baedc")
+  "Day16 - 2017" should "solve first part" in {
+    Day16.resolveWithPrograms(testInput, "abcde") should equal("baedc")
 
-    Day16.resolveFirst(Day16.input) should be("jcobhadfnmpkglie")
+    Day16.part1(Day16.input) should equal("jcobhadfnmpkglie")
   }
 
-  it should "answer second part" in {
-    Day16.resolveSecond(Day16.input) should be("pclhmengojfdkaib")
+  it should "solve second part" in {
+    Day16.part2(Day16.input) should equal("pclhmengojfdkaib")
   }
 }

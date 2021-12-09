@@ -10,12 +10,12 @@ object Day06 extends Puzzle2020[List[List[String]], Int, Int] {
         List.empty[String] +: list
     ).reverse
 
-  override def resolveFirst(input: List[List[String]]): Int =
+  override def part1(input: List[List[String]]): Int =
     input
       .map(_.flatten.distinct.size)
       .sum
 
-  override def resolveSecond(input: List[List[String]]): Int =
+  override def part2(input: List[List[String]]): Int =
     input
       .map(_.reduce(_ intersect _).length)
       .sum

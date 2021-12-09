@@ -146,7 +146,7 @@ object Day18 extends Puzzle2017[Vector[String], Long, Int] with RegexParsers {
       }
     }
 
-  override def resolveFirst(input: Vector[String]): Long = {
+  override def part1(input: Vector[String]): Long = {
     val instructions = input.map(parse(instructionParser, _).get)
     def rec(registers: Map[String, Long] = Map.empty, history: Map[String, Long] = Map.empty, index: Int = 0): Long = instructions(index) match {
       case Snd(register) =>
@@ -162,7 +162,7 @@ object Day18 extends Puzzle2017[Vector[String], Long, Int] with RegexParsers {
     rec()
   }
 
-  override def resolveSecond(input: Vector[String]): Int = {
+  override def part2(input: Vector[String]): Int = {
     val instructions = input.map(parse(instructionParser, _).get)
     def rec(
              firstProgram: Program = Program().copy(registers = Map("p" -> 0)),

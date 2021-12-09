@@ -40,12 +40,12 @@ object Day10 extends Puzzle2019[Vector[Vector[String]], Int, Int] {
       (asteroid, findAsteroids(asteroid, asteroids, width, height).size)
     ).maxBy(_._2)
 
-  override def resolveFirst(input: Vector[Vector[String]]): Int = {
+  override def part1(input: Vector[Vector[String]]): Int = {
     val asteroids = getAsteroids(input)
     getStation(asteroids, input(0).length, input.length)._2
   }
 
-  override def resolveSecond(input: Vector[Vector[String]]): Int = {
+  override def part2(input: Vector[Vector[String]]): Int = {
     val asteroids = getAsteroids(input)
     val station = getStation(asteroids, input(0).length, input.length)._1
     val asteroid200 = station.addDir(findAsteroids(station, asteroids, input(0).length, input.length).toArray.sortBy(_.angle).drop(199).head)

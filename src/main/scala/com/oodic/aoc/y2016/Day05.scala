@@ -40,8 +40,8 @@ object Day05 extends Puzzle2016[String, String, String] {
       )
     }
 
-  override def resolveFirst(input: String): String = getPassword(input)
+  override def part1(input: String): String = getPassword(input)
 
-  override def resolveSecond(input: String): String =
+  override def part2(input: String): String =
     getPasswordIndexed(input).toList.sorted.map(_._2).mkString
 }

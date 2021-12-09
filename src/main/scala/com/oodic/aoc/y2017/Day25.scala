@@ -50,8 +50,8 @@ object Day25 extends Puzzle2017[String, Int, String] with RegexParsers {
     rec()
   }
 
-  override def resolveFirst(input: String): Int =
+  override def part1(input: String): Int =
     executeBluePrint(parse(bluePrintParser, input).get).values.sum
 
-  override def resolveSecond(input: String): String = "No 2nd star"
+  override def part2(input: String): String = "No 2nd star"
 }

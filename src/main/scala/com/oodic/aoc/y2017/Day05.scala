@@ -14,10 +14,10 @@ object Day05 extends Puzzle2017[Vector[Int], Long, Long] {
     rec(instructions)
   }
 
-  override def resolveFirst(instructions: Vector[Int]): Long =
+  override def part1(instructions: Vector[Int]): Long =
     resolveWithF(instructions)(_ + 1)
 
-  override def resolveSecond(instructions: Vector[Int]): Long =
+  override def part2(instructions: Vector[Int]): Long =
     resolveWithF(instructions) {
       case value if value >= 3 => value - 1
       case value => value + 1

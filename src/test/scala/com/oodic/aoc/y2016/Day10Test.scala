@@ -1,13 +1,14 @@
 package com.oodic.aoc.y2016
 
-import org.scalatest.{FlatSpec, Matchers}
+import org.scalatest.flatspec.AnyFlatSpec
+import org.scalatest.matchers.should.Matchers
 
-class Day10Test extends FlatSpec with Matchers {
-  "Day10 - 2016" should "answer first part" in {
-    Day10.resolveFirst(Day10.input) should be(98)
+class Day10Test extends AnyFlatSpec with Matchers {
+  "Day10 - 2016" should "solve first part" in {
+    Day10.part1(Day10.input) should equal(98)
   }
 
-  it should "answer second part" in {
-    Day10.resolveSecond(Day10.input) should be(4042)
+  it should "solve second part" in {
+    Day10.part2(Day10.input) should equal(4042)
   }
 }
