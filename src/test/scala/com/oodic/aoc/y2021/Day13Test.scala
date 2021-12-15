@@ -31,7 +31,7 @@ class Day13Test extends AnyFlatSpec with Matchers {
   "Day13 - 2021" should "solve first part" in {
     Day13.part1(testInput) should equal(17)
 
-    Day13.part1(Day13.input) should equal(0)
+    Day13.part1(Day13.input) should equal(693)
   }
 
   it should "solve second part" in {
