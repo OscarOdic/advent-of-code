@@ -77,7 +77,8 @@ object Day22 extends Puzzle2017[Map[(Int, Int), Boolean], Int, Int] {
     (math.ceil(maxX/2.0).toInt, math.ceil(maxY/2.0).toInt)
   }
 
-  private def toStateMap(grid: Map[(Int, Int), Boolean]) = grid.mapValues(value => if (value) Infected else Clean)
+  private def toStateMap(grid: Map[(Int, Int), Boolean]) =
+    grid.view.mapValues(value => if (value) Infected else Clean).toMap
 
   def resolve(input: Map[(Int, Int), Boolean], nbBursts: Int = 10000, secondPuzzle: Boolean = false): Int = {
     (0 until nbBursts).foldLeft(((toStateMap(input), getCenter(input), Up: Direction), 0)) {

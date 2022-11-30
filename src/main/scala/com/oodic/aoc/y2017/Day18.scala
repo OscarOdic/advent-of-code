@@ -173,9 +173,6 @@ object Day18 extends Puzzle2017[Vector[String], Long, Int] with RegexParsers {
       val (newFirstProgram, newQueueSecondToFirst, newQueueFirstToSecond) = execProgram(firstProgram, queueSecondToFirst, queueFirstToSecond, instructions, secondProgram)
       val (newSecondProgram, finalQueueFirstToSecond, finalQueueSecondToFirst) = execProgram(secondProgram, newQueueFirstToSecond, newQueueSecondToFirst, instructions, newFirstProgram)
 
-      if (newSecondProgram.nbSend == 1) {
-        println(newFirstProgram, newSecondProgram, finalQueueFirstToSecond, finalQueueSecondToFirst)
-      }
       if (newFirstProgram.terminated || newSecondProgram.terminated || (newFirstProgram.waiting && newSecondProgram.waiting))
         newSecondProgram.nbSend
       else

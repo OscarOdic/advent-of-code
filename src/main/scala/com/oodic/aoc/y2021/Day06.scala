@@ -11,9 +11,8 @@ object Day06 extends Puzzle2021[List[Long], Long, Long] {
   private def numberFishCreated(fish: Long, days: Long, map: Map[(Long, Long), Long]): Map[(Long, Long), Long] =
     if (days > fish) {
       val firstNumberCreated = ((days - fish - 1) / 7L) + 1L
-      val (newMap, sum) = (0L until firstNumberCreated).foldLeft((map, 0L))
-      {
-        case((currentMap, currentSum), index) =>
+      val (newMap, sum) = (0L until firstNumberCreated).foldLeft((map, 0L))({
+        case ((currentMap, currentSum), index) =>
           val nextDays = (days - fish - (index * 7L)) - 1
           currentMap.get((nextDays, 8)) match {
             case Some(value) => (currentMap, currentSum + value)
@@ -21,7 +20,7 @@ object Day06 extends Puzzle2021[List[Long], Long, Long] {
               val newMap = numberFishCreated(8, nextDays, currentMap)
               (newMap, currentSum + newMap.getOrElse((nextDays, 8L), 0L))
           }
-      }
+      })
       newMap.updated((days, fish), sum + firstNumberCreated)
     }
     else

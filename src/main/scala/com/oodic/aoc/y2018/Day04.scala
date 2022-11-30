@@ -1,5 +1,6 @@
 package com.oodic.aoc.y2018
 
+import scala.collection.MapView
 import scala.util.parsing.combinator.RegexParsers
 
 object Day04 extends Puzzle2018[List[String], Int, Int] with RegexParsers {
@@ -27,9 +28,9 @@ object Day04 extends Puzzle2018[List[String], Int, Int] with RegexParsers {
     guard <- "Guard #" ~> """\d+""".r <~ "begins shift" ^^ (_.toInt)
   } yield Shift(time, guard)
 
-  private val asleepParser: Parser[Asleep] = timeParser <~ "falls asleep" ^^ Asleep
+  private val asleepParser: Parser[Asleep] = timeParser <~ "falls asleep" ^^ Asleep.apply
 
-  private val wakeupParser: Parser[Wakeup] = timeParser <~ "wakes up" ^^ Wakeup
+  private val wakeupParser: Parser[Wakeup] = timeParser <~ "wakes up" ^^ Wakeup.apply
 
   private val operationParser: Parser[Operation] = shiftParser | asleepParser | wakeupParser
 
@@ -39,13 +40,13 @@ object Day04 extends Puzzle2018[List[String], Int, Int] with RegexParsers {
       case ((map, _), Shift(_, guard)) => (map, guard)
       case ((map, guard), op) => (map.updated(guard, map.getOrElse(guard, List()) :+ op), guard)
     }._1
-    .mapValues(_.grouped(2).toList.flatMap {
+    .view.mapValues(_.grouped(2).toList.flatMap {
       case List(Asleep(start), Wakeup(end)) => (start.minutes until end.minutes).toList
-    }.groupBy(identity).mapValues(_.size))
+    }.groupBy(identity).view.mapValues(_.size).toMap).toMap
 
   override def part1(input: List[String]): Int = {
     val guards = asleepGuards(input.map(parse(operationParser, _).get))
-    val mostAsleepGuard = guards.mapValues(_.values.sum).toList.sortBy(_._2)(Ordering[Int].reverse).head._1
+    val mostAsleepGuard = guards.view.mapValues(_.values.sum).toList.sortBy(_._2)(Ordering[Int].reverse).head._1
     val mostAsleepMinute = guards(mostAsleepGuard).toList.sortBy(_._2)(Ordering[Int].reverse).head._1
     mostAsleepGuard * mostAsleepMinute
   }

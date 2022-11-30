@@ -140,7 +140,7 @@ object Day11 extends Puzzle2019[Vector[Long], Int, String] {
 
   override def part2(input: Vector[Long]): String = {
     val painting = paintingRobot(State(program = input, inputs = Queue(1)), panels = Map((0, 0) -> true), start = true)
-      .mapValues(if (_) "#" else ".")
+      .view.mapValues(if (_) "#" else ".").toMap
     val ymin = painting.map(_._1._2).min
     val ymax = painting.map(_._1._2).max
     val xmin = painting.map(_._1._1).min

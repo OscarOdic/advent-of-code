@@ -12,7 +12,7 @@ object Day14 extends Puzzle2020[List[String], BigInt, BigInt] with RegexParsers 
   case class Write(mem: Int, value: Int) extends Instruction
 
   private val parseMask =
-    "mask =" ~> """.+""".r ^^ Mask
+    "mask =" ~> """.+""".r ^^ Mask.apply
 
   private val parseWrite = for {
     mem <- "mem[" ~> """\d+""".r <~ "]" ^^ (_.toInt)

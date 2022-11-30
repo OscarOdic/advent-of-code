@@ -6,7 +6,7 @@ object Day02 extends Puzzle2018[List[String], Int, String] {
   override def part1(input: List[String]): Int = {
     val (two, three) = input.foldLeft((0, 0)){
       case ((two, three), value) =>
-        val count = value.groupBy(identity).mapValues(_.size)
+        val count = value.groupBy(identity).view.mapValues(_.size).toMap
         (two + (if (count.exists(_._2 == 2)) 1 else 0), three + (if (count.exists(_._2 == 3)) 1 else 0))
     }
     two * three

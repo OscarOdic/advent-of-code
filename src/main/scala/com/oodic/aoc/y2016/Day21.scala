@@ -12,7 +12,9 @@ object Day21 extends Puzzle2016[List[String], String, String] with RegexParsers 
 
   case class SwapPositions(left: Int, right: Int) extends Instruction {
     override def execute(value: String): String =
-      value.updated(left, value.apply(right)).updated(right, value.apply(left))
+      value
+        .updated(left, value.charAt(right))
+        .updated(right, value.charAt(left))
     override def reverse: SwapPositions = this
   }
 
@@ -58,7 +60,7 @@ object Day21 extends Puzzle2016[List[String], String, String] with RegexParsers 
   case class Move(left: Int, right: Int) extends Instruction {
     override def execute(value: String): String = {
       val newValue = value.take(left) + value.drop(left+1)
-      newValue.take(right) + value.apply(left).toString + newValue.drop(right)
+      newValue.take(right) + value.charAt(left).toString + newValue.drop(right)
     }
     override def reverse: Move = Move(right, left)
   }

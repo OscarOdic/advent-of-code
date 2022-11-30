@@ -64,7 +64,7 @@ object Day01 extends Puzzle2016[ List[String], Int, Int] {
         case h::t =>
           val newDirection = getDirection(direction, h.orientation)
           val (newPosition, newHistory) = getHistoryPosition(position, newDirection, h.value, history)
-          newHistory.groupBy(identity).mapValues(_.size).find(_._2 > 1) match {
+          newHistory.groupBy(identity).view.mapValues(_.size).toMap.find(_._2 > 1) match {
             case Some((p, _)) => p
             case _ => rec(newPosition, newDirection, t, newHistory)
           }

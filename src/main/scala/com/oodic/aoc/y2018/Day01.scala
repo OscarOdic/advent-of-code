@@ -15,9 +15,9 @@ object Day01 extends Puzzle2018[List[String], Int, Int] with RegexParsers {
     override def execute(n: Int): Int = n - value
   }
 
-  private val additionParser: Parser[Addition] = ("+" ~> """\d+""".r ^^ (_.toInt)).map(Addition)
+  private val additionParser: Parser[Addition] = ("+" ~> """\d+""".r ^^ (_.toInt)).map(Addition.apply)
 
-  private val deletionParser: Parser[Deletion] = ("-" ~> """\d+""".r ^^ (_.toInt)).map(Deletion)
+  private val deletionParser: Parser[Deletion] = ("-" ~> """\d+""".r ^^ (_.toInt)).map(Deletion.apply)
 
   private val operationParser: Parser[Operation] = additionParser | deletionParser
 

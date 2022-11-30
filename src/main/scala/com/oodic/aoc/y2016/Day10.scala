@@ -38,7 +38,7 @@ object Day10 extends Puzzle2016[List[String], Int, Int] with RegexParsers {
 
     (init.asInstanceOf[List[(Int, Init)]].map(init =>
       init._1 -> init._2.value
-    ).groupBy(_._1).mapValues(_.map(_._2).toVector), give.asInstanceOf[List[(Int, Give)]].toMap)
+    ).groupBy(_._1).view.mapValues(_.map(_._2).toVector).toMap, give.asInstanceOf[List[(Int, Give)]].toMap)
   }
 
   private def execGive(bot: Int, values: Vector[Int], give: Give, bots: Map[Int, Vector[Int]], outputs: Map[Int, Int]) = {

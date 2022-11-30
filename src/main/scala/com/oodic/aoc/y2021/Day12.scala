@@ -18,7 +18,7 @@ object Day12 extends Puzzle2021[List[String], Int, Int] {
     paths
       .flatMap(parseCaveTuple)
       .groupBy(_._1)
-      .mapValues(_.map(_._2))
+      .view.mapValues(_.map(_._2)).toMap
 
   private def isLargeCave(cave: String) =
     cave.head.isUpper

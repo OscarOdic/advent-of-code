@@ -27,8 +27,9 @@ object Day06 extends Puzzle2018[List[String], Int, Int] with RegexParsers {
         case List(coord) => c -> Some(coord)
         case _ => c -> None
       }
-    ).groupBy(_._2).mapValues(_.size)
+    ).groupBy(_._2).view.mapValues(_.size)
     .filter(_._1.isDefined)
+    .toMap
 
   override def part1(input: List[String]): Int = {
     val coords = input.map(parse(coordsParser, _).get)
@@ -36,7 +37,7 @@ object Day06 extends Puzzle2018[List[String], Int, Int] with RegexParsers {
 
     areasCount(getMap(minX, maxX, minY, maxY), coords)
       .zip(areasCount(getMap(minX - 1, maxX + 1, minY - 1, maxY + 1), coords))
-      .filter(t => t._1._2 == t._2._2).keys.map(_._2).max
+      .filter(t => t._1._2 == t._2._2).map(_._1._2).max
   }
 
   override def part2(input: List[String]): Int = {

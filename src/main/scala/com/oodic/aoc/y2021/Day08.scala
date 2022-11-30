@@ -29,7 +29,7 @@ object Day08 extends Puzzle2021[List[(List[String], List[String])], Int, Int] {
             case (6, (1, 3)) => currentMap.updated(6, signal)
             case (6, (2, 4)) => currentMap.updated(9, signal)
           }
-      }.mapValues(_.sorted)
+      }.view.mapValues(_.sorted).toMap
       .map(_.swap)
   }
 

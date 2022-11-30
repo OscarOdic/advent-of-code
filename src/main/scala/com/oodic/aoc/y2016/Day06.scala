@@ -14,7 +14,7 @@ object Day06 extends Puzzle2016[List[String], String, String] {
       else group.minBy(_._2)
 
     input.map( column =>
-      function(column.groupBy(identity).mapValues(_.length).toList)._1
+      function(column.groupBy(identity).view.mapValues(_.length).toMap.toList)._1
     ).mkString
   }
 

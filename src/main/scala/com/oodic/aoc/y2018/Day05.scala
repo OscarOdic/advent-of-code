@@ -1,5 +1,7 @@
 package com.oodic.aoc.y2018
 
+import scala.collection.parallel.CollectionConverters._
+
 object Day05 extends Puzzle2018[String, Int, Int] {
   override val input: String = getInputFile.head
 

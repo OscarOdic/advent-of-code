@@ -20,7 +20,7 @@ object Day09 extends Puzzle2016[String, Long, Long] with RegexParsers {
     def completeDecompressedLength: Long = repeat * completeDecompressed(characters)
   }
 
-  private val simpleParser: Parser[Simple] = """\w+""".r ^^ Simple
+  private val simpleParser: Parser[Simple] = """\w+""".r ^^ Simple.apply
 
   private val compressedParser: Parser[Compressed] = for {
     number <- "(" ~> """\d+""".r.map(_.toInt)

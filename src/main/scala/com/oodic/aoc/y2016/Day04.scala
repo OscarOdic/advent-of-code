@@ -15,7 +15,7 @@ object Day04 extends Puzzle2016[List[String], Int, Int] with RegexParsers {
 
   private def mostCommonLetters(value: String) =
     value.groupBy(identity)
-      .mapValues(_.length).toList
+      .view.mapValues(_.length).toList
       .sortWith((x, y) =>
         x._2 > y._2 || (x._2 == y._2 && x._1 < y._1)
       ).take(5).map(_._1).mkString

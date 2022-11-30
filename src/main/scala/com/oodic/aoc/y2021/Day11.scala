@@ -17,9 +17,9 @@ object Day11 extends Puzzle2021[Map[(Int, Int), Int], Int, Int] {
     } yield (xNeighbor, yNeighbor)
 
   private def resetFlashed(octopusMap: Map[(Int, Int), Int]): Map[(Int, Int), Int] =
-    octopusMap.mapValues(value =>
+    octopusMap.view.mapValues(value =>
       if (value == 10) 0 else value
-    )
+    ).toMap
 
   private def flash(x: Int, y: Int, octopusMap: Map[(Int, Int), Int], nbFlash: Int = 1): (Map[(Int, Int), Int], Int) =
     neighbors(x, y).foldLeft((octopusMap, nbFlash)) {
@@ -35,7 +35,7 @@ object Day11 extends Puzzle2021[Map[(Int, Int), Int], Int, Int] {
     }
 
   private def executeStep(octopusMap: Map[(Int, Int), Int], nbFLash: Int = 0): (Map[(Int, Int), Int], Int) = {
-    val increasedOctopusMap = octopusMap.mapValues(_ + 1)
+    val increasedOctopusMap = octopusMap.view.mapValues(_ + 1).toMap
     increasedOctopusMap.filter(_._2 == 10).keys
       .foldLeft((increasedOctopusMap, nbFLash)) {
         case ((currentMap, currentNbFlash), (x, y)) =>
