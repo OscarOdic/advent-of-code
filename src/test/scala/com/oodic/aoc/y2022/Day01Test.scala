@@ -4,7 +4,7 @@ import org.scalatest.flatspec.AnyFlatSpec
 import org.scalatest.matchers.should.Matchers
 
 class Day01Test extends AnyFlatSpec with Matchers {
-  val testInput = List(
+  private val testInput = List(
     List(
         1000,
         2000,
@@ -27,7 +27,7 @@ class Day01Test extends AnyFlatSpec with Matchers {
       )
     )
 
-  "Day01 - 2021" should "solve first part" in {
+  "Day01 - 2022" should "solve first part" in {
     Day01.part1(testInput) should equal(24000)
 
     Day01.part1(Day01.input) should equal(69693)
