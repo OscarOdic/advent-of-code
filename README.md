@@ -2,6 +2,8 @@
 
 My scala solutions for [Advent Of Code](http://adventofcode.com)
 
+- [2023](http://adventofcode.com/2023)
+  - [solutions](https://github.com/OscarOdic/advent-of-code/tree/master/src/main/scala/aoc/y2023)
 - [2022](http://adventofcode.com/2022)
   - [solutions](https://github.com/OscarOdic/advent-of-code/tree/master/src/main/scala/aoc/y2022)
 - [2021](http://adventofcode.com/2021)
