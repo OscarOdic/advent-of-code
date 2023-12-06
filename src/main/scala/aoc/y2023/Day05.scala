@@ -9,12 +9,6 @@ object Day05 extends Puzzle2023[List[String], Long, Long] with RegexParsers {
     private val srcRangeEnd: Long = srcRangeStart + rangeLength - 1
     private val diff: Long = destRangeStart - srcRangeStart
 
-    def isRange(seed: Long): Boolean =
-      (seed >= srcRangeStart) && (seed <= srcRangeStart + rangeLength)
-
-    def convert(seed: Long): Long =
-      destRangeStart + seed - srcRangeStart
-
     def convertInterval(intervalSeeds: (Long, Long)): (Option[(Long, Long)], List[(Long, Long)]) = {
       val startIn = math.max(srcRangeStart, intervalSeeds._1)
       val endIn = math.min(srcRangeEnd, intervalSeeds._2)
@@ -31,12 +25,6 @@ object Day05 extends Puzzle2023[List[String], Long, Long] with RegexParsers {
   }
 
   private case class Conversions(conversions: List[Conversion]) {
-    def convert(seed: Long): Long = {
-      conversions.find(_.isRange(seed)) match
-        case Some(conversion) => conversion.convert(seed)
-        case _ => seed
-    }
-
     def convertIntervals(intervalsSeeds: List[(Long, Long)]): List[(Long, Long)] =
       val (notConverted, converted) = conversions.foldLeft((intervalsSeeds, List.empty[(Long, Long)])) {
         case ((seedsToConvert, convertedSeeds), conversion) =>
@@ -48,12 +36,6 @@ object Day05 extends Puzzle2023[List[String], Long, Long] with RegexParsers {
   }
 
   private case class Almanac(seeds: List[Long], conversionsList: List[Conversions]) {
-    private def getLocation(seed: Long): Long = {
-      conversionsList.foldLeft(seed)((currentSeed, conversions) =>
-        conversions.convert(currentSeed)
-      )
-    }
-
     private def getIntervalsLocation(intervalSeeds: (Long, Long)): List[(Long, Long)] =
       conversionsList.foldLeft(List(intervalSeeds))((currentIntervals, conversions) =>
         conversions.convertIntervals(currentIntervals)
@@ -61,8 +43,8 @@ object Day05 extends Puzzle2023[List[String], Long, Long] with RegexParsers {
 
     def getMinLocation: Long =
       seeds
-        .map(getLocation)
-        .min
+        .flatMap(seed => getIntervalsLocation((seed, seed)))
+        .minBy(_._1)._1
 
     def getMinIntervalsLocation: Long =
       seeds
