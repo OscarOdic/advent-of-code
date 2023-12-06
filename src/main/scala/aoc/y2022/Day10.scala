@@ -14,14 +14,12 @@ object Day10 extends Puzzle2022[List[String], Int, String] with RegexParsers {
   private def operationParser: Parser[Operation] =
     "noop".r ^^ (_ => Noop) | "addx" ~> """-?\d+""".r ^^ (value => Addx(value.toInt))
 
-  private def parseOperations(operations: List[String]): List[Operation] = {
-    println(operations)
+  private def parseOperations(operations: List[String]): List[Operation] = 
     operations.map(parse(operationParser, _).get)
       .flatMap {
         case op: Addx => List(Noop, op)
         case Noop => List(Noop)
       }
-  }
 
   private def getRegisterSignals(operations: List[Operation]): List[Int] =
     operations.foldLeft((List(1), 1)) { case ((registerSignals, register), operation) =>
