@@ -160,7 +160,6 @@ class Day10Test extends AnyFlatSpec with Matchers {
   }
 
   it should "solve second part" in {
-    println(Day10.part2(testInput))
     Day10.part2(testInput) should equal(
       "\n" +
         "##..##..##..##..##..##..##..##..##..##..\n" +
